@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+.cmlunbo{ position:relative; padding-top:79px}
+.cmlunbo .lunbo_img{ background:url(../tmp/lunbo1.png) no-repeat scroll top center; height:494px; width:100%;}
+.cmlunbo .button{ width:1003px; position:absolute; top:50%; left:50%; margin-left:-501px}
+.cmlunbo .button .left_button{height:67px; width:67px; float:left; background:url(../img/left.png) no-repeat scroll center left; cursor:pointer;}
+.cmlunbo .button .right_button{height:67px; width:67px; float:right; background:url(../img/right.png) no-repeat scroll center right; cursor:pointer;}
+
+.cmbody{ position:relative; width:980px;}
+.cmbody .block{ width:980px;}
+.cmbody .block .title{ margin:40px auto 23px;}
+.cmbody .block .title .title_line{ background:url(../img/linebg.png) repeat-x center center; float:left; width:43%; height:38px;}
+.cmbody .block .title .title_text{ float:left; width:95px; height:38px; margin:0 20px;}
+.cmbody .block .title .title1{ background:url(../img/title1.png) no-repeat center center;}
+.cmbody .block .title .title2{ background:url(../img/title2.png) no-repeat center center;}
+.cmbody .block .title .title3{ background:url(../img/title3.png) no-repeat center center;}
+.cmbody .block .title .title4{ background:url(../img/title4.png) no-repeat center center;}
+.cmbody .block .title .title5{ background:url(../img/title5.png) no-repeat center center;}
+
+.cmbody .block .info{}
+.cmbody .block .info .bigimg{ background:url(../tmp/tab1.png) no-repeat scroll top center; height:384px; position:relative;}
+.cmbody .block .info .bigimg .desc{ background:url(../img/imgbutton.png) no-repeat scroll right bottom; height:50px; width:272px; position:absolute; bottom:9%; right:5%; cursor:pointer;}
+.cmbody .block .info .imgtab{ width:1003px; margin:2px auto 0px;}
+.cmbody .block .info .imgtab .imgleft{ margin-right:2px;}
+.cmbody .block .info .imgtab .imgblock{ float:left; position:relative; cursor:pointer;}
+.cmbody .block .info .imgtab .imgblock .tabimg{}
+.cmbody .block .info .imgtab .imgblock .tabtitle{ position:absolute; bottom:0px; left:0px;}
+.cmbody .block .info .imgtab .imgblock .tabtitle .number{ background-color:#01a8ee; color:#fff; width:53px; height:28px; line-height:28px; font-size:14px; text-align:center;}
+.cmbody .block .info .imgtab .imgblock .tabtitle .content_title{ height:37px; line-height:37px; text-align:left; width:479px; background-color:#000; color:#ffffee; filter:alpha(opacity=80);-moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; padding-left:10px; font-size:16px}
+.cmbody .block .info .imgtab .imgblock .tabword{ position:absolute; top:33%; left:20%; color:#fff; font-size:20px;}
+
+.cmbody .block .info .video_img{}
+.cmbody .block .info .video_img .imglr{ margin:0px 2px;}
+.cmbody .block .info .video_img .video{ float:left; width:325px;}
+.cmbody .block .info .video_img .video .videoimg{}
+.cmbody .block .info .video_img .video .videoname{ font-size:20px; color:#333; text-align:center; width:305px; margin:20px auto 0px;}
+
+.cmbody .block .active{}
+.cmbody .block .active .active_block{ float:left; cursor:pointer;}
+.cmbody .block .active .acitve_relative{ position:relative;}
+.cmbody .block .active .activelr{ margin:0 2px;}
+.cmbody .block .active .active_info{ position:absolute; left:10px; bottom:10px; color:#fff; }
+.cmbody .block .active .active_info .active_title{ font-size:22px;}
+.cmbody .block .active .active_info  .active_desc{ margin-top:10px; font-size:16px; height:30px; line-height:30px;}
+.cmbody .block .active .active_info  .active_desc .active_tag{ display:inline-block; background-color:#01a8ee; padding:0px 10px;}
+
+
+.cmbody .block .newinfo{}
+.cmbody .block .newinfo .newinfo_block{ float:left}
+.cmbody .block .newinfo .newinfo_blocklr{ margin:0px 2px;}
+.cmbody .block .newinfo .newinfo_title{ font-size:24px; width:300px; line-height:30px;margin-top:15px; height:60px;}
+.cmbody .block .newinfo .newinfo_title a{ font-size:20px; width:300px; line-height:30px;margin-top:15px; height:60px; color:#333;}
+.cmbody .block .newinfo .newinfo_border{ background:url(../img/dian.png) repeat-x top center; width:320px; height:1px; margin:15px 0px;}
+.cmbody .block .newinfo .newinfo_desc{ width:300px; margin-top:10px; color:#666666; font-size:16px; line-height:25px; height:80px; overflow:hidden;}
+.cmbody .block .newinfo .newinfo_us{ margin-top:20px; color:#999999;}
+
+.cmbody .block .teacher{}
+.cmbody .block .teacher .teacher_info{ float:left; width:20%; text-align:center; cursor:pointer; height:185px;}
+.cmbody .block .teacher .teacher_info .teacher_photo{ height:143px; line-height:143px; padding-top:13px;}
+.cmbody .block .teacher .teacher_info .teacher_photo img{}
+.cmbody .block .teacher .teacher_info .teacher_name{ margin-top:10px; color:#999999; font-size:18px;}
+.cmbody .block .teacher .teacher_info .check_name{ color:#01a8ee;}
+.cmbody .block .teacher .teacher_info .teacher_desc{ display:none;}
+.cmbody .block .teacher .teacher_info .check_desc{ display:block;}
+.cmbody .block .teacher .teacher_info .check_phone{ background:url(../img/tbg.png) no-repeat center center;}
+
+.cmbody .home_img_obg{ position:absolute; top:400px; left:-200px;}
+.cmbody .home_img_tbg{ position:absolute; bottom:200px; right:-180px; z-index:-1}
+

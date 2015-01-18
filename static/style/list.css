@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+.cmbody .list{ margin-top:42px;}
+.cmbody .list .tag .ltat{ color:#fff;}
+.cmbody .list .tag .ltat div{ float:left; background-color:#bcbcbc; height:55px; width:167px; text-align:center; line-height:55px; font-size:22px; cursor:pointer;}
+.cmbody .list .tag .ltat div a{height:55px; width:167px; text-align:center; line-height:55px; font-size:22px; cursor:pointer; display:inline-block}
+.cmbody .list .tag .ltat .check{ background-color:#feb900;}
+.cmbody .list .tag .rtag div{ float:left; text-align:center; font-size:18px; cursor:pointer; margin-top:20px;}
+.cmbody .list .tag .rtag  .check{ color:#01a8ee; border-bottom:1px solid #01a8ee; padding-bottom:5px;}
+
+.cmbody .list .info{ margin-top:10px;}
+.cmbody .list .info .iblock{ border-bottom:1px solid #e6e6e6; padding-bottom:30px; margin-top:30px;}
+.cmbody .list .info .iblock .iimg{ position:relative;}
+.cmbody .list .info .iblock .iimg .itag{ position:absolute; top:10px; left:10px; background-color:#01a8ee; padding:3px 10px; color:#fff; font-size:20px;}
+
+.cmbody .list .info .iblock .iinfo{ width:609px; margin-left:20px;}
+.cmbody .list .info .iblock .iinfo .ititle { color:#000; font-size:24px; height:30px; line-height:30px;}
+.cmbody .list .info .iblock .iinfo .ititle a{ color:#000; font-size:24px; height:30px; line-height:30px;}
+.cmbody .list .info .iblock .iinfo .iteachter{ color:#666; font-size:16px;}
+.cmbody .list .info .iblock .iinfo .ctag{ height:25px; line-height:25px; font-size:16px;}
+.cmbody .list .info .iblock .iinfo .ctags{ margin-left:5px; background-color:#f6f6f6; padding:0px 5px;}
+.cmbody .list .info .iblock .iinfo .idesc{ color:#666; font-size:16px;}
+.cmbody .list .info .iblock .iinfo .iprice{ color:#666; font-size:16px;}
+.cmbody .list .info .iblock .iinfo .iprice .price{ color:#01a8ee}
+.cmbody .list .info .iblock .iinfo .ibutton{ background:url(../img/listbuttonbg.png) no-repeat scroll center center; width:270px; height:48px; font-size:16px; line-height:48px; text-align:center;}
+.cmbody .list .info .iblock .iinfo .ibutton a{ color:#fff; font-size:16px; height:48px; line-height:48px; font-weight:bold; background:url(../img/sanjiao.png) no-repeat scroll 175px center; width:270px; display:block;}
+
+.member_number{ font-size:18px; height:48px; line-height:48px; text-align:center; margin-left:20px; color:#666;}
+
+/*video list*/
+.cmbody .list .info .vblock{}
+.cmbody .list .info .vblock .vimg{ cursor:pointer;}
+.cmbody .list .info .vblock .vtitle{ font-size:24px; color:#000; width:332px ; margin:0px auto; line-height:28px; cursor:pointer}
+.cmbody .list .info .vblock .vtitle a{ font-size:24px; color:#000; width:332px ; margin:0px auto; line-height:28px; cursor:pointer}
+
+/**/
+.cmbody .list .info .iblock .top{ margin-left:50px;}
+
+/*news*/
+.cmbody .list .info .iblock .iinfo .iauthor{ color:#bbbbbb; font-size:16px;}
+.cmbody .list .info .iblock .iinfo .iauthor .author{ color:#01a8ee;}
