@@ -22,20 +22,32 @@ class Lesson_model extends CI_Model {
 		}
 		return $data;	
 	}
+	
 	function get_count(){
 		$this->db->where('status', 0);
         $count = $this->db->count_all_results('lesson');
         return $count;
 	}
+	
 	function addLesson($post){
 		if(!empty($post)){
 			return $this->db->insert('lesson' , $post);
 		}
 	}
+	
+	function updateLesson($post){
+		if(empty($post['id'])){
+			show_error('参数错误，没有要修改内容的编号');	
+		}
+		if(!empty($post)){
+			return $this->db->where('id' , $post['id'])->update('lesson' , $post);
+		}
+	}
+	
 	function getLesson($post){
 		$data['ret'] = 400;
 		if(!empty($post['id'])){
-			$this->db->select('id , title , desc , guest_id, thumb ,is_price,price,type,address,tag_info,status');
+			$this->db->select('id, title, type, thumb, tag_info, price, is_price, content,desc, address, guest_id, status,stime, etime');
 			$this->db->where('status' , '0');
 			$this->db->where('id' , $post['id']);
 			$query = $this->db->get('lesson');

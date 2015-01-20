@@ -45,19 +45,39 @@
                     <p class="help-block">只能上传.jpg,.png,.jpeg</p>
                   </div>
                    <input type="hidden" value="<?php echo $info['id']?>" name="id" />
-                   <button type="button" class="btn btn-primary" onClick="add_teacher()">提交</button>
+                   <input class="button" type="submit" value="提交" onClick="from_submit()"/>
                 </form>
 			</div>
             <!-- end: Content -->
 		</div>
 	</div>
+	<script src="<?php echo $this->config->item('js_path'); ?>keditor/kindeditor-min.js"></script>
+<script src="<?php echo $this->config->item('js_path'); ?>keditor/lang/zh_CN.js"></script>
+<script>
+$(document).ready(function(){
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('#resume', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : true,
+			width : '100%',
+			afterBlur: function(){this.sync('#web_description');},
+			//items : [
+			//	'source','fontname', 'fontsize','wordpaste','fullscreen','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+			//	'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+			//	'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link']
+			items : [
+				'source','fontname', 'fontsize','wordpaste','fullscreen','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons', 'link']
+		});
+	});	
+});
+function add_carousel(){
+	$("#local_form").submit();	
+}
+</script>
 	<?php $this->load->view('public/footer'); ?>
-	<!-- start: JavaScript-->
-	<script>
-		function add_teacher(){
-			$("#local_form").submit();	
-		}
-	</script>
-	<!-- end: JavaScript-->
 </body>
 </html>

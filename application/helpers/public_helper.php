@@ -15,7 +15,7 @@ if (! function_exists('dump'))
 if(! function_exists('get_upload_file_dir'))
 {
 	function get_upload_file_dir(){
-		$base_dir = dirname(dirname(dirname(dirname(__FILE__)))) . '/upload/';
+		$base_dir = dirname(dirname(dirname(dirname(__FILE__)))) . '/zmo/upload/';
 		$time = date('Y-m-d-H' , time());
 		$time_dir = explode('-' , $time);
 		$dir = $base_dir;

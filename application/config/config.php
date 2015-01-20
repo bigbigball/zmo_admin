@@ -15,9 +15,9 @@
 |
 */
 $config['base_url']	= '';
-$config['css_path']		= '/admin/css/';
-$config['img_path']	= '/admin/images/';
-$config['js_path']		= '/admin/js/';
+$config['css_path']		= '/zmo_admin/css/';
+$config['img_path']	= '/zmo_admin/images/';
+$config['js_path']		= '/zmo_admin/js/';
 /*
 |--------------------------------------------------------------------------
 | Index File

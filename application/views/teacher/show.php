@@ -68,7 +68,8 @@
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('teacher/teacher/deleteTeacher' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
-              <!--a href="<?php echo site_url('teacher/teacher/editTeacher' , array('id' => $v['id']));?>" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a--> 
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="<?php echo site_url('teacher/teacher/editTeacher' , array('id' => $v['id']));?>" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a> 
            	</td>
           </tr>
           <?php }}?>

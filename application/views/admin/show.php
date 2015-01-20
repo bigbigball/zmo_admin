@@ -57,7 +57,7 @@
             <td><?php echo date('Y-m-d H:i:s' , $v['ctime']);?></td>
             <td>
               <!-- Icons -->
-              <a href="<?php echo site_url('admin/admin/deleteAdmin' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
+              <a href="<?php echo site_url('zmo_admin/admin/deleteAdmin' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
               <!--a href="#" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a--> 
            	</td>
           </tr>
@@ -67,7 +67,7 @@
     </div>
     <!-- End #tab1 -->
     <div class="tab-content" id="tab2">
-      <form role="form" id="local_form" method="post" enctype="multipart/form-data" action="<?php echo site_url('admin/admin/doAddAdmin')?>">
+      <form role="form" id="local_form" method="post" enctype="multipart/form-data" action="<?php echo site_url('zmo_admin/admin/doAddAdmin')?>">
         <fieldset>
         <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
         <p>

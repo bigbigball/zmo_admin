@@ -77,7 +77,8 @@
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('lesson/lesson/deleteLesson' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
-              <!--a href="#" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a--> 
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="<?php echo site_url('lesson/lesson/editLesson' , array('id' => $v['id']));?>" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a> 
            	</td>
           </tr>
           <?php }}?>
@@ -138,11 +139,11 @@
         </p>
         <p>
           <label>列表页描述</label>
-         <textarea class="text-input textarea" id="desc" name="desc" cols="79" rows="15"></textarea>
+         <textarea class="text-input textarea" id="desc" name="desc" cols="79" rows="15" placeholder="限制输入500字"></textarea>
         </p>
         <p>
           <label>地址</label>
-         <textarea class="text-input textarea" id="address" name="address" cols="79" rows="15"></textarea>
+         <textarea class="text-input textarea" id="address" name="address" cols="79" rows="15" placeholder="限制输入100字"></textarea>
         </p>
         <p>
           <label>简介</label>

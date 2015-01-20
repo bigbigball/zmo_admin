@@ -7,7 +7,7 @@
       <div style="height:40px;"></div>
       <!--a href="#"><img id="logo" src="<?php echo $this->config->item("img_path"); ?>logo.png" alt="Simpla Admin logo" /></a-->
       <!-- Sidebar Profile links -->
-      <div id="profile-links"> Hello, <a href="<?php echo site_url('admin/admin/info')?>" title="修改账户信息">管理员</a><!--, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a--><br />
+      <div id="profile-links"> Hello, <a href="<?php echo site_url('zmo_admin/admin/info')?>" title="修改账户信息">管理员</a><!--, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a--><br />
         <br />
         <a href="http://www.cmpao.com" title="ZMO 网站" target="_blank">官网</a> | <a href="<?php echo site_url('user/user/loginout')?>" title="退出">退出</a> 
       </div>
@@ -18,8 +18,8 @@
             <a href="#/" class="nav-top-item no-submenu">
               管理员管理</a> 
               <ul>
-                <li><a class="current" href="<?php echo site_url('admin/admin/show'); ?>">管理员信息</a></li>
-                <li><a class="current" href="<?php echo site_url('admin/admin/power'); ?>">权限信息</a></li>
+                <li><a class="current" href="<?php echo site_url('zmo_admin/admin/show'); ?>">管理员信息</a></li>
+                <li><a class="current" href="<?php echo site_url('zmo_admin/admin/power'); ?>">权限信息</a></li>
               </ul>
         </li-->
         <li> 

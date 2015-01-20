@@ -18,7 +18,7 @@ class admin extends CI_Controller
 		$config['use_page_numbers'] = TRUE; 
 		$config['page_query_string'] = TRUE;
 		$config['query_string_segment'] = 'page';
-        $config['base_url'] = site_url('admin/admin/show') . '?';
+        $config['base_url'] = site_url('zmo_admin/admin/show') . '?';
         $config['total_rows'] = $this->admin_model->get_count($option);
         $config['per_page'] = $option['limit'];
         $config['cur_page'] = $option['page'];
@@ -80,7 +80,7 @@ class admin extends CI_Controller
 		$data['status'] = 0;
 		$data['passwd'] = md5($post['password']);
 		$ret = $this->admin_model->add_admin($data);
-		redirect('admin/admin/show');
+		redirect('zmo_admin/admin/show');
 	}
 	function deleteAdmin(){
 		$get = $this->input->get();
@@ -90,7 +90,7 @@ class admin extends CI_Controller
 				$this->admin_model->deleteAdmin($get['id']);
 			}
 		}
-		redirect('admin/admin/show');
+		redirect('zmo_admin/admin/show');
 	}
 	public function power(){
 		$get = $this->input->get();
@@ -102,7 +102,7 @@ class admin extends CI_Controller
 		$config['use_page_numbers'] = TRUE; 
 		$config['page_query_string'] = TRUE;
 		$config['query_string_segment'] = 'page';
-        $config['base_url'] = site_url('admin/admin/power') . '?';
+        $config['base_url'] = site_url('zmo_admin/admin/power') . '?';
         $config['total_rows'] = $this->admin_model->get_power_count($option);
         $config['per_page'] = $option['limit'];
         $config['cur_page'] = $option['page'];
@@ -125,7 +125,7 @@ class admin extends CI_Controller
 			$data['action'] = implode($post['power'],',');
 		}
 		$this->admin_model->add_power($data);
-		redirect('admin/admin/power');
+		redirect('zmo_admin/admin/power');
 	}
 
 	public function deletePower(){
@@ -133,7 +133,7 @@ class admin extends CI_Controller
 		if(!empty($get) && isset($get['id'])){
 			$this->admin_model->delete_power($get);
 		}
-		redirect('admin/admin/power');
+		redirect('zmo_admin/admin/power');
 	}
 }
 /* End of file mileage.php */

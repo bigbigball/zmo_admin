@@ -15,4 +15,4 @@
   </div>
 </div>
 <?php $this->load->view('public/footer.php');?>
-<script type="text/javascript" src="/admin/static/js/swfobject.js"></script>
+<script type="text/javascript" src="/zmo_admin/static/js/swfobject.js"></script>

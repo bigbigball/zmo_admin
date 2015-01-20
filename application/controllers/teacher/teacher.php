@@ -175,7 +175,7 @@ class teacher extends CI_Controller
 				show_error('您要删除的数据已不存在');	
 				break;
 			case 200 :
-				redirect('teacher/teacher/carousel');
+				redirect('teacher/teacher/show');
 				break;	
 		}
 	}
