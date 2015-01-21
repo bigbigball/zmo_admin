@@ -47,7 +47,7 @@ class Lesson_model extends CI_Model {
 	function getLesson($post){
 		$data['ret'] = 400;
 		if(!empty($post['id'])){
-			$this->db->select('id, title, type, thumb, tag_info, price, is_price, content,desc, address, guest_id, status,stime, etime');
+			$this->db->select('*');
 			$this->db->where('status' , '0');
 			$this->db->where('id' , $post['id']);
 			$query = $this->db->get('lesson');

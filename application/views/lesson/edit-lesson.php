@@ -1,15 +1,16 @@
-<?php $this->load->view('public/header'); ?>
-<style>
-.form-group{ border:1px solid #5bc0de; padding:10px 5px; margin-top:10px;}
-.btn{ margin-top:10px;}
-.form-control{ width:500px;}
-</style>
-</head>
-<body>
-	<!-- start: Header -->
-	<?php $this->load->view('public/banner-header'); ?>
-	<!-- start: Header -->
-	    <div class="tab-content" id="tab2">
+<?php $this->load->view('public/banner-header'); ?>
+<div class="content-box">
+  <!-- Start Content Box -->
+  <div class="content-box-header">
+    <h3>课程列表</h3>
+    <ul class="content-box-tabs">
+      <li><a href="#tab1" class="default-tab">编辑课程</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <!-- End .content-box-header -->
+  <div class="content-box-content">
+    <div class="tab-content default-tab" id="tab1">
       <form role="form" id="local_form" method="post" enctype="multipart/form-data" action="<?php echo site_url('lesson/lesson/doEditLesson')?>">
         <fieldset>
         <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
@@ -40,6 +41,9 @@
         </p>
         <p>
           <label for="exampleInputFile">列表图片</label>
+          <p>原始图片</p>
+          <img src="<?php echo $info['info']['img']; ?>" width="100px;" height="135px;"> </br>
+          
           <input type="file" id="file" name="file">
           <small>只能上传.jpg,.png,.jpeg</small>
           <!--span class="input-notification error png_bg">Error message</span--> </p>
@@ -72,14 +76,19 @@
          <textarea class="text-input textarea" id="web_description" name="web_description" cols="79" rows="15"><?php echo $info['info']['content'];?></textarea>
         </p>
         <p>
-         <input type="hidden" value="<?php echo $info['info']['id']?>" name="id" />
+          <input type="hidden" value="<?php echo $info['info']['id']?>" name="id" />
           <input class="button" type="submit" value="提交" onClick="from_submit()"/>
+          <input class="button" type="button" value="返回" onClick="go_back()"/>
         </p>
         </fieldset>
         <div class="clear"></div>
         <!-- End .clear -->
       </form>
     </div>
+    
+  </div>
+  <!-- End .content-box-content -->
+</div>
 <script src="<?php echo $this->config->item('js_path'); ?>keditor/kindeditor-min.js"></script>
 <script src="<?php echo $this->config->item('js_path'); ?>keditor/lang/zh_CN.js"></script>
 <script>
@@ -96,17 +105,19 @@ $(document).ready(function(){
 			//	'source','fontname', 'fontsize','wordpaste','fullscreen','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 			//	'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
 			//	'insertunorderedlist', '|', 'emoticons', 'image','multiimage', 'link']
-			items : [
-				'source','fontname', 'fontsize','wordpaste','fullscreen','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'link']
+			//items : [
+			//	'source','fontname', 'fontsize','wordpaste','fullscreen','|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+			//	'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+			//	'insertunorderedlist', '|', 'emoticons', 'link']
 		});
 	});	
 });
 function add_carousel(){
 	$("#local_form").submit();	
 }
+function go_back(){
+	window.location.href="<?php echo site_url('lesson/lesson/show'); ?>";
+}
 </script>
-	<?php $this->load->view('public/footer'); ?>
-</body>
-</html>
+<?php $this->load->view('public/footer'); ?>
+
