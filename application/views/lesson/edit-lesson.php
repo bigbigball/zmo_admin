@@ -57,7 +57,7 @@
           <input class="text-input small-input" type="text" id="etime" placeholder="0" name="etime"  value="<?php echo date('Y-m-d', $info['info']['etime']);?>"onClick="WdatePicker()"/>
         </p>
         <p>
-          <input type="checkbox" name="is_price" <?php if($info['info']['is_price'] == '1') echo "checked ";?>value="1"/>
+          <input type="checkbox" name="is_price" <?php if($info['info']['is_price'] == '1') echo "checked";?> value="1"/>
           该课程是否需要缴费 </p>
         <p>
           <label>缴费金额</label>

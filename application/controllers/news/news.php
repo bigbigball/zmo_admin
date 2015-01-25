@@ -62,7 +62,7 @@ class news extends CI_Controller
 //				$upload_data = $this->upload->data('file');
 //			}
 //		}
-		if(!empty($post)){
+		if(!empty($post['file_path'])){
 			$file_path= $post['file_path'];
 			$path = explode('/', $file_path);
 			$file_name = $path[count($path)-1];
@@ -110,6 +110,7 @@ class news extends CI_Controller
 			$data['author'] = $post['author'];
 			$data['desc'] = $post['desc'];
 			$data['content'] = $post['web_description'];
+			date_default_timezone_set("Asia/Shanghai");
 			$data['ctime'] = time();
 			$data['utime'] = time();
 			$res = $this->news_model->addNews($data);
@@ -161,7 +162,7 @@ class news extends CI_Controller
 //				$upload_data = $this->upload->data('file');
 //			}
 //		}
-		if(!empty($post)){
+		if(!empty($post['file_path'])){
 			$file_path= $post['file_path'];
 			$path = explode('/', $file_path);
 			$file_name = $path[count($path)-1];
@@ -209,6 +210,7 @@ class news extends CI_Controller
 			$data['author'] = $post['author'];
 			$data['desc'] = $post['desc'];
 			$data['content'] = $post['web_description'];
+			date_default_timezone_set("Asia/Shanghai");
 			$data['utime'] = time();
 			$res = $this->news_model->editNews($data, array('id' => $post['id']));
 		}

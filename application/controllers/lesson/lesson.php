@@ -65,7 +65,7 @@ class lesson extends CI_Controller
 //				$upload_data = $this->upload->data('file');
 //			}
 //		}
-		if(!empty($post)){
+		if(!empty($post['file_path'])){
 			$file_path= $post['file_path'];
 			$path = explode('/', $file_path);
 			$file_name = $path[count($path)-1];
@@ -99,6 +99,7 @@ class lesson extends CI_Controller
 			$data['desc'] = $post['desc'];
 			$data['address'] = $post['address'];
 			$data['content'] = $post['web_description'];
+			date_default_timezone_set("Asia/Shanghai");
 			$data['ctime'] = time();
 			$data['utime'] = $data['ctime'];
 			$data['stime'] = strtotime($post['stime']);
@@ -157,7 +158,7 @@ class lesson extends CI_Controller
 //				$upload_data = $this->upload->data('file');
 //			}
 //		}
-			if(!empty($post)){
+			if(!empty($post['file_path'])){
 			$file_path= $post['file_path'];
 			$path = explode('/', $file_path);
 			$file_name = $path[count($path)-1];
@@ -192,6 +193,7 @@ class lesson extends CI_Controller
 			$data['desc'] = $post['desc'];
 			$data['address'] = $post['address'];
 			$data['content'] = $post['web_description'];
+			date_default_timezone_set("Asia/Shanghai");
 			$data['ctime'] = time();
 			$data['utime'] = $data['ctime'];
 			$data['stime'] = strtotime($post['stime']);

@@ -12,6 +12,7 @@ class Active_model extends CI_Model {
         $count = $this->db->count_all_results('active');
         return $count;
 	}
+	
 	function get_list($post){
 		$data = array();
 		$this->db->select('id , title,theme , img , desc,stime,etime,quota,is_price,price,address');
@@ -32,10 +33,20 @@ class Active_model extends CI_Model {
 			return $this->db->insert('active' , $post);
 		}
 	}
+	
+	function editActive($post){
+		if(empty($post['id'])){
+			show_error('参数错误，没有要修改内容的编号');	
+		}
+		if(!empty($post)){
+			$this->db->where('id' , $post['id'])->update('active' , $post);
+		}
+	}
+	
 	function getActive($post){
 		$data['ret'] = 400;
 		if(!empty($post['id'])){
-			$this->db->select('id , title,theme , img , desc,stime,etime,quota,is_price,price,address,status');
+			$this->db->select('*');
 			$this->db->where('status' , '0');
 			$this->db->where('id' , $post['id']);
 			$query = $this->db->get('active');

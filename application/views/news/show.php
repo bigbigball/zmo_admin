@@ -130,10 +130,10 @@
         </p-->
         <p>
           <label>列表页描述</label>
-         <textarea class="text-input textarea" id="desc" name="desc" cols="79" rows="15"></textarea>
+         <textarea class="text-input textarea" id="desc" name="desc" cols="79" rows="15" placeholder="限制输入500字"></textarea>
         </p>
         <p>
-          <label>简介</label>
+          <label>正文</label>
          <textarea class="text-input textarea" id="web_description" name="web_description" cols="79" rows="15"></textarea>
         </p>
         <p>

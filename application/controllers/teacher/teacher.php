@@ -58,7 +58,7 @@ class teacher extends CI_Controller
 //				$upload_data = $this->upload->data('file');
 //			}
 //		}
-		if(!empty($post)){
+		if(!empty($post['file_path'])){
 			$file_path= $post['file_path'];
 			$path = explode('/', $file_path);
 			$file_name = $path[count($path)-1];
@@ -159,7 +159,7 @@ class teacher extends CI_Controller
 //			}
 //		}
 
-		if(!empty($post)){
+		if(!empty($post['file_path'])){
 			$file_path= $post['file_path'];
 			$path = explode('/', $file_path);
 			$file_name = $path[count($path)-1];

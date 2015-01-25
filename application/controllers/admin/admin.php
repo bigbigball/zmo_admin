@@ -76,6 +76,7 @@ class admin extends CI_Controller
 		}
 		$data['uname'] = $post['title'];
 		$data['power_group'] = implode(',' , $post['power']);
+		date_default_timezone_set("Asia/Shanghai");
 		$data['ctime'] = time();
 		$data['status'] = 0;
 		$data['passwd'] = md5($post['password']);

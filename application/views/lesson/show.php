@@ -150,7 +150,7 @@
          <textarea class="text-input textarea" id="address" name="address" cols="79" rows="15" placeholder="限制输入100字"></textarea>
         </p>
         <p>
-          <label>简介</label>
+          <label>正文</label>
          <textarea class="text-input textarea" id="web_description" name="web_description" cols="79" rows="15"></textarea>
         </p>
         <p>

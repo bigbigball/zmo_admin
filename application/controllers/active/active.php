@@ -41,34 +41,39 @@ class active extends CI_Controller
 	public function doAddActive(){
 		$post = $this->input->post();
 		$data = array();
-		$upload_data = array();
 		$dir = get_upload_file_dir();
 		$base_dir = get_base_dir();
-		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
-			$config['upload_path'] 		= $dir;
-			$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
-			$config['overwrite']		= FALSE;
-			$config['max_size']			= 0 ;
-			$config['max_width']		= 0 ;
-			$config['max_height']		= 0 ;
-			$config['max_filename']		= 0 ;
-			$config['encrypt_name']		= true;
-			$config['remove_spaces'] 	= true;
-			$this->load->library('upload' , $config);
-			if ( ! $this->upload->do_upload('file')){
-				show_error($this->upload->display_errors());
-			} 
-			else{
-				$upload_data = $this->upload->data('file');
-			}
-		}
-		if(!empty($upload_data)){
-			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+//		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
+//			$config['upload_path'] 		= $dir;
+//			$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
+//			$config['overwrite']		= FALSE;
+//			$config['max_size']			= 0 ;
+//			$config['max_width']		= 0 ;
+//			$config['max_height']		= 0 ;
+//			$config['max_filename']		= 0 ;
+//			$config['encrypt_name']		= true;
+//			$config['remove_spaces'] 	= true;
+//			$this->load->library('upload' , $config);
+//			if ( ! $this->upload->do_upload('file')){
+//				show_error($this->upload->display_errors());
+//			} 
+//			else{
+//				$upload_data = $this->upload->data('file');
+//			}
+//		}
+		if(!empty($post['file_path'])){
+			$file_path= $post['file_path'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
+			//$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
 			$this->load->library("image_lib");
 			$config_thumb['image_library'] = 'gd2';
 			$config_thumb['quality'] = 100;
-			$config_thumb['source_image'] = $upload_data['full_path'];
-			$config_thumb['new_image'] = $upload_data['file_name'] ;
+			$config_thumb['source_image'] = $file_path;
+			$config_thumb['new_image'] = $file_name;
 			$config_thumb['create_thumb'] = true;
 			$config_thumb['width']	= 250;  
 			$config_thumb['height'] = 285;  
@@ -77,8 +82,26 @@ class active extends CI_Controller
             if(!$this->image_lib->resize()){
 				show_error($this->image_lib->display_errors());	
 			}
-			$data['img'] = str_replace($base_dir , '' , $dir) . $upload_data['raw_name'] . '_250_285' . $upload_data['file_ext'] ;
+			$data['img'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
 		}
+		
+//		if(!empty($upload_data)){
+//			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+//			$this->load->library("image_lib");
+//			$config_thumb['image_library'] = 'gd2';
+//			$config_thumb['quality'] = 100;
+//			$config_thumb['source_image'] = $upload_data['full_path'];
+//			$config_thumb['new_image'] = $upload_data['file_name'] ;
+//			$config_thumb['create_thumb'] = true;
+//			$config_thumb['width']	= 250;  
+//			$config_thumb['height'] = 285;  
+//			$config_thumb['thumb_marker']="_250_285";
+//			$this->image_lib->initialize($config_thumb); 
+//            if(!$this->image_lib->resize()){
+//				show_error($this->image_lib->display_errors());	
+//			}
+//			$data['img'] = str_replace($base_dir , '' , $dir) . $upload_data['raw_name'] . '_250_285' . $upload_data['file_ext'] ;
+//		}
 		if(!empty($post)){
 			$data['title'] = $post['title'];	
 			$data['theme'] = $post['theme'];	
@@ -89,10 +112,95 @@ class active extends CI_Controller
 			$data['desc'] = $post['desc'];
 			$data['address'] = $post['address'];
 			$data['type'] = $post['type'];
+			date_default_timezone_set("Asia/Shanghai");
 			$data['ctime'] = time();
 			$data['stime'] = strtotime($post['stime']);
 			$data['etime'] = strtotime($post['etime']);
 			$res = $this->active_model->addActive($data);
+			redirect('active/active/show');
+		}else{
+			$this->newactive();	
+		}
+	}
+	
+	public function editActive(){
+		$post = $this->input->get();
+		if(!empty($post['id'])){
+			$info = $this->active_model->getActive($post);
+			if(empty($info) || empty($info['ret'])){
+				show_error('[活动]数据错误');	
+			}
+			switch($info['ret']){
+				case 400 :
+					show_error('参数错误');	
+					break;
+				case 204 :
+					show_error('您要修改的数据已不存在');	
+					break;
+				case 200 :
+					$data['type'] = array('1' => 'meeting up' , '2' => 'weeked');
+					$data['info'] = $info['info'];
+					$this->load->view('active/edit-active' , $data);
+					break;	
+			}
+		}else{
+			show_error('参数错误');	
+		}
+	}
+	
+	public function doEditActive(){
+		$post = $this->input->post();
+		if(empty($post['id'])){
+			show_error('参数错误，没有要修改内容的编号');	
+		}
+		$info = $this->active_model->getActive($post);
+		if($info['ret'] != 200){
+			show_error('您要修改的数据已不存在');
+		}
+		$data = array();
+		$dir = get_upload_file_dir();
+		$base_dir = get_base_dir();
+
+		if(!empty($post['file_path'])){
+			$file_path= $post['file_path'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
+			//$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+			$this->load->library("image_lib");
+			$config_thumb['image_library'] = 'gd2';
+			$config_thumb['quality'] = 100;
+			$config_thumb['source_image'] = $file_path;
+			$config_thumb['new_image'] = $file_name;
+			$config_thumb['create_thumb'] = true;
+			$config_thumb['width']	= 250;  
+			$config_thumb['height'] = 285;  
+			$config_thumb['thumb_marker']="_250_285";
+			$this->image_lib->initialize($config_thumb); 
+            if(!$this->image_lib->resize()){
+				show_error($this->image_lib->display_errors());	
+			}
+			$data['img'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
+		}
+			
+		if(!empty($post)){
+			$data['id'] = $post['id'];
+			$data['title'] = $post['title'];
+			$data['theme'] = $post['theme'];	
+			$data['quota'] = $post['amount'];	
+			$data['is_price'] = (!empty($post['is_price'])) ? $post['is_price'] : 0;	
+			$data['price'] = $post['price'];	
+			$data['content'] = $post['web_description'];
+			$data['desc'] = $post['desc'];
+			$data['address'] = $post['address'];
+			$data['type'] = $post['type'];
+			date_default_timezone_set("Asia/Shanghai");
+			$data['ctime'] = time();
+			$data['stime'] = strtotime($post['stime']);
+			$data['etime'] = strtotime($post['etime']);
+			$res = $this->active_model->editActive($data);
 			redirect('active/active/show');
 		}else{
 			$this->newactive();	
