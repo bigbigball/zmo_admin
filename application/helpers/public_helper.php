@@ -16,6 +16,7 @@ if(! function_exists('get_upload_file_dir'))
 {
 	function get_upload_file_dir(){
 		$base_dir = dirname(dirname(dirname(dirname(__FILE__)))) . '/zmo/upload/';
+		date_default_timezone_set("Asia/Shanghai");
 		$time = date('Y-m-d-H' , time());
 		$time_dir = explode('-' , $time);
 		$dir = $base_dir;

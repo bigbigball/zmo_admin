@@ -44,34 +44,40 @@ class lesson extends CI_Controller
 	public function doAddLesson(){
 		$post = $this->input->post();
 		$data = array();
-		$upload_data = array();
+//		$upload_data = array();
 		$dir = get_upload_file_dir();
 		$base_dir = get_base_dir();
-		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
-			$config['upload_path'] 		= $dir;
-			$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
-			$config['overwrite']		= FALSE;
-			$config['max_size']			= 0 ;
-			$config['max_width']		= 0 ;
-			$config['max_height']		= 0 ;
-			$config['max_filename']		= 0 ;
-			$config['encrypt_name']		= true;
-			$config['remove_spaces'] 	= true;
-			$this->load->library('upload' , $config);
-			if ( ! $this->upload->do_upload('file')){
-				show_error($this->upload->display_errors());
-			} 
-			else{
-				$upload_data = $this->upload->data('file');
-			}
-		}
-		if(!empty($upload_data)){
-			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+//		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
+//			$config['upload_path'] 		= $dir;
+//			$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
+//			$config['overwrite']		= FALSE;
+//			$config['max_size']			= 0 ;
+//			$config['max_width']		= 0 ;
+//			$config['max_height']		= 0 ;
+//			$config['max_filename']		= 0 ;
+//			$config['encrypt_name']		= true;
+//			$config['remove_spaces'] 	= true;
+//			$this->load->library('upload' , $config);
+//			if ( ! $this->upload->do_upload('file')){
+//				show_error($this->upload->display_errors());
+//			} 
+//			else{
+//				$upload_data = $this->upload->data('file');
+//			}
+//		}
+		if(!empty($post)){
+			$file_path= $post['file_path'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
+			//$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
 			$this->load->library("image_lib");
 			$config_thumb['image_library'] = 'gd2';
 			$config_thumb['quality'] = 100;
-			$config_thumb['source_image'] = $upload_data['full_path'];
-			$config_thumb['new_image'] = $upload_data['file_name'] ;
+			$config_thumb['source_image'] = $file_path;
+			$config_thumb['new_image'] = $file_name;
 			$config_thumb['create_thumb'] = true;
 			$config_thumb['width']	= 250;  
 			$config_thumb['height'] = 285;  
@@ -80,8 +86,8 @@ class lesson extends CI_Controller
             if(!$this->image_lib->resize()){
 				show_error($this->image_lib->display_errors());	
 			}
-			$data['img'] = str_replace($base_dir , '' , $dir) . $upload_data['raw_name'] . $upload_data['file_ext'] ;
-			$data['thumb'] = str_replace($base_dir , '' , $dir) . $upload_data['raw_name'] . '_250_285' . $upload_data['file_ext'] ;
+			$data['img'] = str_replace($base_dir , '' , $dir) . $raw_name . $file_ext ;
+			$data['thumb'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
 		}
 		if(!empty($post)){
 			$data['title'] = $post['title'];
@@ -133,31 +139,37 @@ class lesson extends CI_Controller
 		$upload_data = array();
 		$dir = get_upload_file_dir();
 		$base_dir = get_base_dir();
-		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
-			$config['upload_path'] 		= $dir;
-			$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
-			$config['overwrite']		= FALSE;
-			$config['max_size']			= 0 ;
-			$config['max_width']		= 0 ;
-			$config['max_height']		= 0 ;
-			$config['max_filename']		= 0 ;
-			$config['encrypt_name']		= true;
-			$config['remove_spaces'] 	= true;
-			$this->load->library('upload' , $config);
-			if ( ! $this->upload->do_upload('file')){
-				show_error($this->upload->display_errors());
-			} 
-			else{
-				$upload_data = $this->upload->data('file');
-			}
-		}
-		if(!empty($upload_data)){
-			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+//		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
+//			$config['upload_path'] 		= $dir;
+//			$config['allowed_types'] 	= 'gif|jpg|png|jpeg';
+//			$config['overwrite']		= FALSE;
+//			$config['max_size']			= 0 ;
+//			$config['max_width']		= 0 ;
+//			$config['max_height']		= 0 ;
+//			$config['max_filename']		= 0 ;
+//			$config['encrypt_name']		= true;
+//			$config['remove_spaces'] 	= true;
+//			$this->load->library('upload' , $config);
+//			if ( ! $this->upload->do_upload('file')){
+//				show_error($this->upload->display_errors());
+//			} 
+//			else{
+//				$upload_data = $this->upload->data('file');
+//			}
+//		}
+			if(!empty($post)){
+			$file_path= $post['file_path'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
+			//$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
 			$this->load->library("image_lib");
 			$config_thumb['image_library'] = 'gd2';
 			$config_thumb['quality'] = 100;
-			$config_thumb['source_image'] = $upload_data['full_path'];
-			$config_thumb['new_image'] = $upload_data['file_name'] ;
+			$config_thumb['source_image'] = $file_path;
+			$config_thumb['new_image'] = $file_name;
 			$config_thumb['create_thumb'] = true;
 			$config_thumb['width']	= 250;  
 			$config_thumb['height'] = 285;  
@@ -166,8 +178,8 @@ class lesson extends CI_Controller
             if(!$this->image_lib->resize()){
 				show_error($this->image_lib->display_errors());	
 			}
-			$data['img'] = str_replace($base_dir , '' , $dir) . $upload_data['raw_name'] . $upload_data['file_ext'] ;
-			$data['thumb'] = str_replace($base_dir , '' , $dir) . $upload_data['raw_name'] . '_250_285' . $upload_data['file_ext'] ;
+			$data['img'] = str_replace($base_dir , '' , $dir) . $raw_name . $file_ext ;
+			$data['thumb'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
 		}
 		if(!empty($post)){
 			$data['id'] = $post['id'];

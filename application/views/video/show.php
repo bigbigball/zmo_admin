@@ -63,7 +63,7 @@
                         <td><?php echo $v['content']?></td>
             <td>
               <!-- Icons -->
-              <a href="<?php echo site_url('video/video/deleteVideo' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
+              <a href="<?php echo site_url('video/video/deleteVideo' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <a href="<?php echo site_url('video/video/updateVideo' , array('id' => $v['id']));?>" title="Update"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Update" /></a> 
            	</td>
@@ -245,6 +245,11 @@ function toloacl(){
       window.location.reload();
     }
   });
+}
+function delform() {
+	if (!confirm("确认要删除？")) {
+       window.event.returnValue = false;
+    }
 }
 </script>
 <?php $this->load->view('public/footer'); ?>

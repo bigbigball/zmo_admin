@@ -71,7 +71,7 @@
             <td><?php echo $v['quota'];?></td>
             <td>
               <!-- Icons -->
-              <a href="<?php echo site_url('active/active/deleteActive' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
+              <a href="<?php echo site_url('active/active/deleteActive' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
               <!--a href="#" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a--> 
            	</td>
           </tr>
@@ -179,6 +179,11 @@ $(document).ready(function(){
 });
 function add_carousel(){
 	$("#local_form").submit();	
+}
+function delform() {
+	if (!confirm("确认要删除？")) {
+       window.event.returnValue = false;
+    }
 }
 </script>
 <?php $this->load->view('public/footer'); ?>

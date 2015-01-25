@@ -1,4 +1,5 @@
 <?php $this->load->view('public/banner-header'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>static/style/uploadify.css" />
 <div class="content-box">
   <!-- Start Content Box -->
   <div class="content-box-header">
@@ -76,7 +77,7 @@
             </td>
             <td>
               <!-- Icons -->
-              <a href="<?php echo site_url('lesson/lesson/deleteLesson' , array('id' => $v['id']));?>" title="Delete"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
+              <a href="<?php echo site_url('lesson/lesson/deleteLesson' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <a href="<?php echo site_url('lesson/lesson/editLesson' , array('id' => $v['id']));?>" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a> 
            	</td>
@@ -116,10 +117,13 @@
           </select>
         </p>
         <p>
-          <label for="exampleInputFile">列表图片</label>
-          <input type="file" id="file" name="file">
-          <small>只能上传.jpg,.png,.jpeg</small>
-          <!--span class="input-notification error png_bg">Error message</span--> </p>
+        	<label for="exampleInputFile">列表图片</label>
+        	<div id="upload_img"></div>
+			<?php echo form_upload(array('name' => 'Filedata', 'id' => 'upload'));?>
+			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于1M</small><br/>
+			<a class='operation' href="javascript:$('#upload').uploadifyUpload();">上传文件</a>
+			<input id="file_path" type="hidden" name='file_path' value=""></input>
+        </p>
         <p>
           <label>标签[注：以";"号分割多个tag]</label>
           <input class="text-input large-input" type="text" id="tag" placeholder="tag1;tag2;ta3" style="width:200px;" name="tag"/>
@@ -163,8 +167,43 @@
 </div>
 <script src="<?php echo $this->config->item('js_path'); ?>keditor/kindeditor-min.js"></script>
 <script src="<?php echo $this->config->item('js_path'); ?>keditor/lang/zh_CN.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/swfobject.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery.uploadify.v2.1.0.min.js"></script>
 <script>
 $(document).ready(function(){
+	$("#upload").uploadify({
+		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
+		script: '<?php echo base_url();?>static/script/uploadify.php',
+		cancelImg: '<?php echo base_url();?>static/resource/cancel.png',
+		folder: '',
+		multi : true,
+		simUploadLimit : 2,
+		overwrite : true,
+		buttonText: 'Browse',
+		sizeLimit: 1048576,
+		fileDesc: '支持格式:jpg/gif/jpeg/png/bmp',
+		fileExt : '*.jpg;*.gif;*.jpeg;*.png;*.bmp',
+		scriptAccess: 'always',
+		multi: true,
+		'onError' : function (event, queueID, fileObj, errorObj) {
+			 if (errorObj.status == 404){
+				$('#tips').html('找不到文件');
+			 }else if (errorObj.type === "HTTP"){
+				 $('#tips').html('error '+errorObj.type+": "+errorObj.status);
+			 }else if (errorObj.type ==="File Size"){
+				 $('#tips').html(fileObj.name+' '+errorObj.type+' Limit: '+Math.round(errorObj.sizeLimit/1024)+'KB');
+			 }else{
+				 $('#tips').html('error '+errorObj.type+": "+errorObj.text);
+			 }
+			},
+		'onComplete'   : function (event, queueID, fileObj, response, data) {
+			var obj = eval( "(" + response + ")" );
+			$('#tips').html("文件上传成功!");
+			$('#upload_img').html("<img src='" + obj.path +"' style='width: 80px; height:80px; margin-right: 5px;'/>");
+			$('#file_path').val(obj.file_path);
+		}	
+	});
 	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('#web_description', {
@@ -186,6 +225,11 @@ $(document).ready(function(){
 });
 function add_carousel(){
 	$("#local_form").submit();	
+}
+function delform() {
+	if (!confirm("确认要删除？")) {
+       window.event.returnValue = false;
+    }
 }
 </script>
 <?php $this->load->view('public/footer'); ?>
