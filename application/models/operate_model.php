@@ -9,7 +9,7 @@ class Operate_model extends CI_Model {
 	
 	function get_count($post){
 		$this->db->where('type' , '0');
-        $count = $this->db->count_all_results('vcode');
+        $count = $this->db->count_all_results('code');
         return $count;
 	}
 	
@@ -20,7 +20,7 @@ class Operate_model extends CI_Model {
 		$this->db->order_by('status','asc');
 		$this->db->order_by('id' , 'desc');
 		$this->db->limit($post['limit'],(($post['page']-1) * $post['limit']));
-		$query = $this->db->get('vcode');
+		$query = $this->db->get('code');
 		if($query->num_rows() > 0){
 			$info = $query->result_array();
 			$data['info'] = $info;
@@ -38,7 +38,7 @@ class Operate_model extends CI_Model {
 		if(!empty($code) && count($code) > 0){
 			foreach($code as $val){
 				$data['code'] = $val;
-				$this->db->insert('vcode' , $data);
+				$this->db->insert('code' , $data);
 			}
 		}
 		return true;
@@ -56,7 +56,7 @@ class Operate_model extends CI_Model {
 					$num = $num - count($cinfo);
 					$cinfo = $this->get_code($num , $cinfo);
 				}else{
-					$count = $this->db->where('code' , $code)->count_all_results('vcode');
+					$count = $this->db->where('code' , $code)->count_all_results('code');
 					if($count > 0){
 						$cinfo = $this->get_code($num , $cinfo);
 					}else{
