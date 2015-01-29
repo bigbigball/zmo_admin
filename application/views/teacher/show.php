@@ -60,7 +60,7 @@
             </td-->
                     	<td>
 						<?php if(!empty($v['portrait'])){?>
-                        	<img src="<?php echo $v['portrait'] ;?>" width="100px;"/ height="135px;">
+                        	<img src="<?php echo $v['portrait'] ;?>" width="100px;" height="135px;" />
 							<?php }?>
                         </td>
                         <td><?php echo $v['name'];?></td>
@@ -100,7 +100,7 @@
         	<label for="exampleInputFile">列表图片</label>
         	<div id="upload_img"></div>
 			<?php echo form_upload(array('name' => 'Filedata', 'id' => 'upload'));?>
-			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于1M</small><br/>
+			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比1:1</small><br/>
 			<a class='operation' href="javascript:$('#upload').uploadifyUpload();">上传文件</a>
 			<input id="file_path" type="hidden" name='file_path' value=""></input>
         </p>

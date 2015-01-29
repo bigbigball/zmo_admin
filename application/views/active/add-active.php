@@ -32,7 +32,7 @@
                   <div class="form-group">
                     <label for="exampleInputFile">上传活动图片</label>
                     <input type="file" id="file" name="file">
-                    <p class="help-block">只能上传.jpg,.png,.jpeg</p>
+                    <p class="help-block">只能上传.jpg,.png,.jpeg;文件小于500k,长宽比4:3</p>
                   </div>
                   <div class="form-group">
                   	<label>活动主题</label>

@@ -36,7 +36,7 @@
                   <div class="form-group">
                     <label for="exampleInputFile">导师照片</label>
                     <input type="file" id="file" name="file">
-                    <p class="help-block">只能上传.jpg,.png,.jpeg</p>
+                    <p class="help-block">只能上传.jpg,.png,.jpeg;文件小于500k,长宽比1:1</p>
                   </div>
                    <button type="button" class="btn btn-primary" onClick="add_teacher()">提交</button>
                 </form>
