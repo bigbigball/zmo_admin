@@ -37,8 +37,25 @@ class Video extends CI_Controller {
 		exit($request_url);
 	}
 	function show(){
-		$info = $this->video_model->get_videos();
-		$data['video'] = $info ;
+		$get = $this->input->get();
+		$option['limit'] = 5;
+        $option['page'] = empty($get['page']) ? 1 : $get['page'];
+		$option['status'] = 0 ;
+        $this->load->library('pagination');
+		$config['num_links'] = 5;
+		$config['use_page_numbers'] = TRUE; 
+		$config['page_query_string'] = TRUE;
+		$config['query_string_segment'] = 'page';
+        $config['base_url'] = site_url('video/video/show') . '?';
+        $config['total_rows'] = $this->video_model->get_count($option);
+        $config['per_page'] = $option['limit'];
+        $config['cur_page'] = $option['page'];
+		
+        $this->pagination->initialize($config);
+        $pagination = $this->pagination->create_links();
+
+		$data['video'] = $this->video_model->get_list($option);
+		$data['page'] = $pagination;
 		$this->load->view('video/show' , $data);
 	}
 	
