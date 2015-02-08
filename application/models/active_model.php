@@ -15,7 +15,7 @@ class Active_model extends CI_Model {
 	
 	function get_list($post){
 		$data = array();
-		$this->db->select('id , title,theme , img , desc,stime,etime,quota,is_price,price,address');
+		$this->db->select('id , title,theme , img , desc,position,stime,etime,quota,is_price,price,address');
 		$this->db->where('status' , '0');
 		$this->db->order_by('order' , 'desc');
 		$this->db->order_by('id' , 'desc');

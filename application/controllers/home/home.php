@@ -39,31 +39,40 @@ class home extends CI_Controller
 	
 	public function doAddCarousel(){
 		$post = $this->input->post();
-		$upload_data = array();
+//		$upload_data = array();
 		$dir = get_upload_file_dir();
 		$base_dir = get_base_dir();
-		if(!empty($_FILES['file'])){
-			$config['upload_path'] 		= $dir;
-			$config['allowed_types'] 	= 'gif|jpg|png';
-			$config['overwrite']		= FALSE;
-			$config['max_size']			= 0 ;
-			$config['max_width']		= 0 ;
-			$config['max_height']		= 0 ;
-			$config['max_filename']		= 0 ;
-			$config['encrypt_name']		= true;
-			$config['remove_spaces'] 	= true;
-			$this->load->library('upload' , $config);
-			if ( ! $this->upload->do_upload('file')){
-				show_error($this->upload->display_errors());
-			} 
-			else{
-				$upload_data = $this->upload->data('file');
-			}
+//		if(!empty($_FILES['file'])){
+//			$config['upload_path'] 		= $dir;
+//			$config['allowed_types'] 	= 'gif|jpg|png';
+//			$config['overwrite']		= FALSE;
+//			$config['max_size']			= 0 ;
+//			$config['max_width']		= 0 ;
+//			$config['max_height']		= 0 ;
+//			$config['max_filename']		= 0 ;
+//			$config['encrypt_name']		= true;
+//			$config['remove_spaces'] 	= true;
+//			$this->load->library('upload' , $config);
+//			if ( ! $this->upload->do_upload('file')){
+//				show_error($this->upload->display_errors());
+//			} 
+//			else{
+//				$upload_data = $this->upload->data('file');
+//			}
+//		}
+		
+//		if(!empty($upload_data)){
+//			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+//		}
+		if(!empty($post['file_path'])){
+			$file_path= $post['file_path'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
 		}
-		$post['path'] = '';
-		if(!empty($upload_data)){
-			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
-		}
+		$post['path'] = str_replace($base_dir , '' , $dir) . $raw_name . $file_ext ;
 		$info = $this->home_model->addCarousel($post);
 		redirect('home/home/carousel');
 	}
@@ -98,30 +107,39 @@ class home extends CI_Controller
 		if($info['ret'] != 200){
 			show_error('您要修改的数据已不存在');
 		}
-		$upload_data = array();
 		$dir = get_upload_file_dir();
 		$base_dir = get_base_dir();
-		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
-			$config['upload_path'] 		= $dir;
-			$config['allowed_types'] 	= 'gif|jpg|png';
-			$config['overwrite']		= FALSE;
-			$config['max_size']			= 0 ;
-			$config['max_width']		= 0 ;
-			$config['max_height']		= 0 ;
-			$config['max_filename']		= 0 ;
-			$config['encrypt_name']		= true;
-			$config['remove_spaces'] 	= true;
-			$this->load->library('upload' , $config);
-			if ( ! $this->upload->do_upload('file')){
-				show_error($this->upload->display_errors());
-			} 
-			else{
-				$upload_data = $this->upload->data('file');
-			}
+//		$upload_data = array();
+//		if(!empty($_FILES['file']) && $_FILES['file']['error'] == 0){
+//			$config['upload_path'] 		= $dir;
+//			$config['allowed_types'] 	= 'gif|jpg|png';
+//			$config['overwrite']		= FALSE;
+//			$config['max_size']			= 0 ;
+//			$config['max_width']		= 0 ;
+//			$config['max_height']		= 0 ;
+//			$config['max_filename']		= 0 ;
+//			$config['encrypt_name']		= true;
+//			$config['remove_spaces'] 	= true;
+//			$this->load->library('upload' , $config);
+//			if ( ! $this->upload->do_upload('file')){
+//				show_error($this->upload->display_errors());
+//			} 
+//			else{
+//				$upload_data = $this->upload->data('file');
+//			}
+//		}
+//		if(!empty($upload_data)){
+//			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
+//		}
+		if(!empty($post['file_path'])){
+			$file_path= $post['file_path'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
 		}
-		if(!empty($upload_data)){
-			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
-		}
+		$post['path'] = str_replace($base_dir , '' , $dir) . $raw_name . $file_ext ;
 		$info = $this->home_model->editCarousel($post);
 		redirect('home/home/carousel');	
 	}

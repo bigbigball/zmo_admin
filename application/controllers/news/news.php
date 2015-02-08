@@ -110,6 +110,7 @@ class news extends CI_Controller
 			$data['author'] = $post['author'];
 			$data['desc'] = $post['desc'];
 			$data['content'] = $post['web_description'];
+			$data['position'] = $post['position'];
 			date_default_timezone_set("Asia/Shanghai");
 			$data['ctime'] = time();
 			$data['utime'] = time();
@@ -210,6 +211,7 @@ class news extends CI_Controller
 			$data['author'] = $post['author'];
 			$data['desc'] = $post['desc'];
 			$data['content'] = $post['web_description'];
+			$data['position'] = $post['position'];
 			date_default_timezone_set("Asia/Shanghai");
 			$data['utime'] = time();
 			$res = $this->news_model->editNews($data, array('id' => $post['id']));

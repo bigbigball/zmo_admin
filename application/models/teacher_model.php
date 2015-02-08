@@ -10,7 +10,7 @@ class Teacher_model extends CI_Model {
 	function get_list($post)
 	{
 		$data = array();
-		$this->db->select('id , name , portrait , occupation as occ,top,home_img');
+		$this->db->select('id , name , position,portrait , occupation as occ,top,home_img');
 		if(!empty($post['top']) && $post['top'] == 1){
 			$this->db->where('top' , $post['top']);	
 		}
@@ -34,6 +34,9 @@ class Teacher_model extends CI_Model {
 		$data = array();
 		if(!empty($post['name'])){
 			$data['name'] = $post['name'] ;	
+		}
+		if(!empty($post['position'])){
+			$data['position'] = $post['position'] ;	
 		}
 		if(!empty($post['occ'])){
 			$data['occupation'] = $post['occ'] ;	
@@ -74,6 +77,9 @@ class Teacher_model extends CI_Model {
 		if(!empty($post['name'])){
 			$data['name'] = $post['name'] ;	
 		}
+		if(!empty($post['position'])){
+			$data['position'] = $post['position'] ;	
+		}
 		if(!empty($post['occ'])){
 			$data['occupation'] = $post['occ'] ;	
 		}
@@ -113,7 +119,7 @@ class Teacher_model extends CI_Model {
 	function getTeacher($post){
 		$data['ret'] = 400;
 		if(!empty($post['id'])){
-			$this->db->select('id , name , portrait , home_img , occupation as occ , desc,resume,status,top,order');
+			$this->db->select('id , name , position,portrait , home_img , occupation as occ , desc,resume,status,top,order');
 			$this->db->where('id' , $post['id']);
 			$query = $this->db->get('tutor');
 			if($query->num_rows() > 0){

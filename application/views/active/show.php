@@ -31,6 +31,7 @@
             <th>时间</th>
             <th>地址</th>
             <th>报名人数</th>
+            <th>位置</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -70,6 +71,7 @@
             <td><?php echo date('Y-m-d',$v['stime']) . '——' . date('Y-m-d' , $v['etime']);?></td>
             <td><?php echo $v['address'];?></td>
             <td><?php echo $v['quota'];?></td>
+            <td><?php echo $v['position']?></td>
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('active/active/deleteActive' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
@@ -100,6 +102,10 @@
             <option value="<?php echo $k ;?>"><?php echo $v;?></option>
             <?php }}?>
           </select>
+        </p>
+        <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" placeholder="请输入显示位置" name="position"/>
         </p>
         <p>
             <label for="exampleInputFile">列表图片</label>
@@ -165,6 +171,12 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery.uploadify.v2.1.0.min.js"></script>
 <script>
 $(document).ready(function(){
+	$("#main-nav > li:eq(2) > ul").css('display','block'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(1) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(0) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(3) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(4) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").addClass('current'); 
 	$("#upload").uploadify({
 		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
 		script: '<?php echo base_url();?>static/script/uploadify.php',

@@ -58,7 +58,7 @@
             <td><?php if($v['expire'] > time()){ echo date('Y-m-d H:i:s' , $v['expire']);}else{echo '已过期';}?></td>
             <td>
               <!-- Icons -->
-              <a href="<?php echo site_url('active/active/deleteActive' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
+              <a href="<?php echo site_url('operate/operate/deleteOperate' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
               <!--a href="#" title="Edit Meta"><img src="<?php echo $this->config->item("img_path"); ?>icons/hammer_screwdriver.png" alt="Edit Meta" /></a--> 
            	</td>
           </tr>
@@ -99,6 +99,11 @@
   <!-- End .content-box-content -->
 </div>
 <script>
+$(document).ready(function(){
+	$("#main-nav > li:eq(3) > ul").css('display','block'); 
+	$("#main-nav > li:eq(3) > ul > li:eq(1) > a").removeClass('current'); 
+	$("#main-nav > li:eq(3) > ul > li:eq(0) > a").addClass('current'); 
+});
 function form_submit(){
 	$("#local_form").submit();	
 }

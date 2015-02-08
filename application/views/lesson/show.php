@@ -31,6 +31,7 @@
             <th>收费金额</th>
             <th>地址</th>
             <th>tag</th>
+            <th>位置</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -70,6 +71,7 @@
             <td><?php echo $v['price'];?></td>
             <td><?php echo $v['address'];?></td>
             <td><?php echo str_replace('|' , ';' , $v['tag_info']);?></td>
+            <td><?php echo $v['position']?></td>
             <td>
 				<?php if(!empty($v['path'])){?>
                 <img src="<?php echo $v['path'] ;?>" width="200px;"/ height="100px;">
@@ -115,6 +117,10 @@
             <option value="<?php echo $v['id'] ;?>"><?php echo $v['name'];?></option>
             <?php }}?>
           </select>
+        </p>
+        <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" placeholder="请输入显示位置" name="position"/>
         </p>
         <p>
         	<label for="exampleInputFile">列表图片</label>
@@ -172,6 +178,12 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery.uploadify.v2.1.0.min.js"></script>
 <script>
 $(document).ready(function(){
+	$("#main-nav > li:eq(2) > ul").css('display','block'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(1) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(3) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(4) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(0) > a").addClass('current'); 
 	$("#upload").uploadify({
 		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
 		script: '<?php echo base_url();?>static/script/uploadify.php',

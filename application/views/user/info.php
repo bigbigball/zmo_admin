@@ -73,6 +73,9 @@
   <!-- End .content-box-content -->
 </div>
 <script>
+$(document).ready(function(){
+	$("#main-nav > li:eq(0) > ul").css('display','block'); 
+});
 function add_carousel(){
   var npwd = $("#npwd").val();
   var npwd2 = $("#npwd2").val();

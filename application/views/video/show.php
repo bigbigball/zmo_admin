@@ -35,6 +35,7 @@
             	<th>图片</th>
               <th>题目</th>
               <th>内容</th>
+              <th>位置</th>
               <th>操作</th>
           </tr>
         </thead>
@@ -61,6 +62,7 @@
                         </td>
                         <td><?php echo $v['title'];?></td>
                         <td><?php echo $v['content']?></td>
+                        <td><?php echo $v['position']?></td>
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('video/video/deleteVideo' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
@@ -93,6 +95,10 @@
         <p>
           <label>视频标题：</label>
           <input type="text" name="title" id="title" class="text-input large-input"/>
+        </p>
+        <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" placeholder="请输入显示位置" name="position"/>
         </p>
         <p>
           <label>标签[注：以";"号分割多个tag]</label>
@@ -128,6 +134,12 @@
 <script type="text/javascript" src="<?php echo $this->config->item('js_path'); ?>swfobject.js"></script>
 <script>
 $(document).ready(function(){
+	$("#main-nav > li:eq(2) > ul").css('display','block'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(0) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(3) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(4) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(1) > a").addClass('current'); 
   // 加载上传flash ------------- start
 var swfobj=new SWFObject('http://union.bokecc.com/flash/api/uploader.swf', 'uploadswf', '80', '25', '8');
 swfobj.addVariable( "progress_interval" , 1); //  上传进度通知间隔时长（单位：s）

@@ -7,7 +7,7 @@
       <div style="height:40px;"></div>
       <!--a href="#"><img id="logo" src="<?php echo $this->config->item("img_path"); ?>logo.png" alt="Simpla Admin logo" /></a-->
       <!-- Sidebar Profile links -->
-      <div id="profile-links"> Hello, <a href="<?php echo site_url('zmo_admin/admin/info')?>" title="修改账户信息">管理员</a><!--, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a--><br />
+      <div id="profile-links"> Hello, <a href="<?php echo site_url('admin/admin/show')?>" title="修改账户信息">管理员</a><!--, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a--><br />
         <br />
         <a href="http://www.cmpao.com" title="ZMO 网站" target="_blank">官网</a> | <a href="<?php echo site_url('user/user/loginout')?>" title="退出">退出</a> 
       </div>
@@ -31,7 +31,7 @@
               </ul>
         </li>
         <li> 
-        	  <a href="#/" class="nav-top-item no-submenu">
+        	  <a href="#" class="nav-top-item no-submenu">
               <!-- Add the class "no-submenu" to menu items with no sub menu -->
               首页推荐 </a> 
               <ul>
@@ -56,36 +56,11 @@
           运营管理 </a>
           <ul>
             <li><a class="current" href="<?php echo site_url('operate/operate/show'); ?>">邀请码</a></li>
+            <li><a class="current" href="<?php echo site_url('feedback/feedback/show'); ?>">意见反馈</a></li>
           </ul>
         </li>
       </ul>
       <!-- End #main-nav -->
-      <div id="messages" style="display: none">
-        <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
-        <h3>3 Messages</h3>
-        <p> <strong>17th May 2009</strong> by Admin<br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. <small><a href="#" class="remove-link" title="Remove message">Remove</a></small> </p>
-        <p> <strong>2nd May 2009</strong> by Jane Doe<br />
-          Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est. <small><a href="#" class="remove-link" title="Remove message">Remove</a></small> </p>
-        <p> <strong>25th April 2009</strong> by Admin<br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. <small><a href="#" class="remove-link" title="Remove message">Remove</a></small> </p>
-        <form action="#" method="post">
-          <h4>New Message</h4>
-          <fieldset>
-          <textarea class="textarea" name="textfield" cols="79" rows="5"></textarea>
-          </fieldset>
-          <fieldset>
-          <select name="dropdown" class="small-input">
-            <option value="option1">Send to...</option>
-            <option value="option2">Everyone</option>
-            <option value="option3">Admin</option>
-            <option value="option4">Jane Doe</option>
-          </select>
-          <input class="button" type="submit" value="Send" />
-          </fieldset>
-        </form>
-      </div>
-      <!-- End #messages -->
     </div>
   </div>
   <!-- End #sidebar -->

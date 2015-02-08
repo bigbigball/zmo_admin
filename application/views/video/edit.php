@@ -34,6 +34,10 @@
           <input type="text" name="title" id="title" value="<?php echo $info['title']?>" class="text-input large-input"/>
         </p>
         <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" value="<?php echo $info['position']?>" name="position"/>
+        </p>
+        <p>
           <label>标签[注：以";"号分割多个tag]</label>
           <input class="text-input large-input" type="text" id="tag" value="<?php echo $info['tag']?>" name="tag"/>
         </p>

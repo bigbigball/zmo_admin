@@ -29,6 +29,7 @@
                         <th>姓名</th>
                         <th>职业</th>
                         <th>是否热门</th>
+                        <th>位置</th>
                         <th>操作</th>
           </tr>
         </thead>
@@ -66,6 +67,7 @@
                         <td><?php echo $v['name'];?></td>
                         <td><?php echo $v['occ']?></td>
                         <td><?php echo $v['top'];?></td>
+                        <td><?php echo $v['position']?></td>
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('teacher/teacher/deleteTeacher' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete"/></a>
@@ -96,6 +98,10 @@
           <!-- Classes for input-notification: success, error, information, attention -->
           <br />
           <!--small>A small description of the field</small--> </p>
+          <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" placeholder="请输入显示位置" name="position"/>
+        </p>
         <p>
         	<label for="exampleInputFile">列表图片</label>
         	<div id="upload_img"></div>
@@ -130,6 +136,12 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery.uploadify.v2.1.0.min.js"></script>
 <script>
 $(document).ready(function(){
+	$("#main-nav > li:eq(2) > ul").css('display','block'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(0) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(1) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(4) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(3) > a").addClass('current'); 
 	$("#upload").uploadify({
 		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
 		script: '<?php echo base_url();?>static/script/uploadify.php',

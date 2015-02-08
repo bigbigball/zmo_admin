@@ -38,12 +38,16 @@
           </select>
         </p>
         <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" value="<?php echo $info['position']?>" name="position"/>
+        </p>
+        <p>
         	<label for="exampleInputFile">列表图片</label>
         	<div id="upload_img">
                <img src="<?php echo $info['img']?>" style='width: 80px; height:80px; margin-right: 5px;'/>
         	</div>
 			<?php echo form_upload(array('name' => 'Filedata', 'id' => 'upload'));?>
-			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于1M</small><br/>
+			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于1M;图片长宽比例控制在4:3</small><br/>
 			<a class='operation' href="javascript:$('#upload').uploadifyUpload();">上传文件</a>
 			<input id="file_path" type="hidden" name='file_path' value=""></input>
 			</p>

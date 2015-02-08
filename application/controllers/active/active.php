@@ -110,6 +110,7 @@ class active extends CI_Controller
 			$data['price'] = $post['price'];	
 			$data['content'] = $post['web_description'];
 			$data['desc'] = $post['desc'];
+			$data['position'] = $post['position'];
 			$data['address'] = $post['address'];
 			$data['type'] = $post['type'];
 			date_default_timezone_set("Asia/Shanghai");
@@ -194,6 +195,7 @@ class active extends CI_Controller
 			$data['price'] = $post['price'];	
 			$data['content'] = $post['web_description'];
 			$data['desc'] = $post['desc'];
+			$data['position'] = $post['position'];
 			$data['address'] = $post['address'];
 			$data['type'] = $post['type'];
 			date_default_timezone_set("Asia/Shanghai");

@@ -97,6 +97,7 @@ class lesson extends CI_Controller
 			$data['is_price'] = (!empty($post['is_price'])) ? $post['is_price'] : 0;	
 			$data['price'] = $post['price'];
 			$data['desc'] = $post['desc'];
+			$data['position'] = $post['position'];
 			$data['address'] = $post['address'];
 			$data['content'] = $post['web_description'];
 			date_default_timezone_set("Asia/Shanghai");
@@ -191,6 +192,7 @@ class lesson extends CI_Controller
 			$data['is_price'] = (!empty($post['is_price'])) ? $post['is_price'] : 0;	
 			$data['price'] = $post['price'];
 			$data['desc'] = $post['desc'];
+			$data['position'] = $post['position'];
 			$data['address'] = $post['address'];
 			$data['content'] = $post['web_description'];
 			date_default_timezone_set("Asia/Shanghai");

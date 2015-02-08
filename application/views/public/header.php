@@ -19,5 +19,5 @@
 <script type="text/javascript" src="<?php echo $this->config->item('js_path'); ?>facebox.js"></script>
 <!-- jQuery WYSIWYG Plugin -->
 <script type="text/javascript" src="<?php echo $this->config->item('js_path'); ?>jquery.wysiwyg.js"></script>
-<script type="text/javascript" src="<?php echo $this->config->item('js_path'); ?>/date/WdatePicker.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('js_path'); ?>date/WdatePicker.js"></script>
 </head>

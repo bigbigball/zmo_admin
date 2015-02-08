@@ -40,6 +40,7 @@ class Video_model extends CI_Model {
 		$this->db->order_by('id' , 'desc');
 		$this->db->limit($post['limit'],(($post['page']-1) * $post['limit']));
 		$query = $this->db->get('video');
+		$info = array();
 		if($query->num_rows() > 0){
 			$info = $query->result_array();
 		}

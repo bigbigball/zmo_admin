@@ -29,6 +29,10 @@
           </select>
         </p>
         <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" value="<?php echo $info['position']?>" name="position"/>
+        </p>
+        <p>
             <label for="exampleInputFile">列表图片</label>
         	<div id="upload_img">
         		<img src="<?php echo $info['img']?>" style='width: 80px; height:80px; margin-right: 5px;'/>
@@ -148,7 +152,7 @@ function add_carousel(){
 	$("#local_form").submit();	
 }
 function go_back(){
-	window.location.href="<?php echo site_url('lesson/lesson/show'); ?>";
+	window.location.href="<?php echo site_url('active/active/show'); ?>";
 }
 function delform() {
 	if (!confirm("确认要删除？")) {

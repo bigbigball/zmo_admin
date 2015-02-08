@@ -68,4 +68,37 @@ class Operate_model extends CI_Model {
 		}
 		return $cinfo;
 	}
+	function getOperate($post){
+		$data['ret'] = 400;
+		if(!empty($post['id'])){
+			$this->db->select('*');
+			$this->db->where('status' , '0');
+			$this->db->where('id' , $post['id']);
+			$query = $this->db->get('code');
+			if($query->num_rows() > 0){
+				$data['ret'] = 200;
+				$info = $query->row_array();
+				$data['info'] = $info;
+			}else{
+				$data['ret'] = 204;	
+			}
+		}
+		return $data ;	
+	}
+	function deleteOperate($post){
+		$data['ret'] = 400;
+		if(!empty($post['id'])){
+			$this->db->select('id');
+			$this->db->where('id' , $post['id']);
+			$query = $this->db->get('code');
+			if($query->num_rows() > 0){
+				$data['ret'] = 200;
+				$info = $query->row_array();
+				$this->db->where('id' , $info['id'])->update('code' , array('status' => 1));
+			}else{
+				$data['ret'] = 204;	
+			}
+		}
+		return $data;	
+	}
 }

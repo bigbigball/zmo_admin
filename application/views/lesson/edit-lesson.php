@@ -38,6 +38,10 @@
           </select>
         </p>
         <p>
+        <label>显示位置<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="position" value="<?php echo $info['info']['position']?>" name="position"/>
+        </p>
+        <p>
         	<label for="exampleInputFile">列表图片</label>
         	<div id="upload_img">
         	<img src='<?php echo $info['info']['img'];?>' style='width: 80px; height:80px; margin-right: 5px;'/>

@@ -10,7 +10,7 @@ class Home_model extends CI_Model {
 	function get_carousel($post)
 	{
 		$data = array();
-		$this->db->select('id , title , status , uri , order , ctime , status,path');
+		$this->db->select('id , title , status , uri , order , ctime , position,status,path');
 		$this->db->where('status = ' , 0);
 		$this->db->order_by('order' , 'desc');
 		$this->db->order_by('id' , 'desc');
@@ -33,6 +33,7 @@ class Home_model extends CI_Model {
 		$data['status'] = 0;
 		$data['uri'] = $post['uri'];
 		$data['order'] = 0 ;
+		$data['position'] = $post['position'];
 		$data['ctime'] = time();	
 		$this->db->insert('carousel' , $data);
 	}
@@ -45,13 +46,14 @@ class Home_model extends CI_Model {
 			$data['path'] = $post['path'];
 		}
 		$data['uri'] = $post['uri'];
+		$data['position'] = $post['position'];
 		$data['ctime'] = time();	
 		$this->db->where('id' , $post['id'])->update('carousel' , $data);
 	}
 	function getCarousel($post){
 		$data['ret'] = 400;
 		if(!empty($post['id'])){
-			$this->db->select('id , title , status , uri , order , ctime , status,path');
+			$this->db->select('id , title , status , uri , order , position,ctime , status,path');
 			$this->db->where('id' , $post['id']);
 			$query = $this->db->get('carousel');
 			if($query->num_rows() > 0){
