@@ -35,7 +35,7 @@
             	<th>图片</th>
               <th>题目</th>
               <th>内容</th>
-              <th>位置</th>
+              
               <th>操作</th>
           </tr>
         </thead>
@@ -62,7 +62,7 @@
                         </td>
                         <td><?php echo $v['title'];?></td>
                         <td><?php echo $v['content']?></td>
-                        <td><?php echo $v['position']?></td>
+                        
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('video/video/deleteVideo' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>

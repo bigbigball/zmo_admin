@@ -36,7 +36,7 @@
                <img src="<?php echo $info['portrait']?>" style='width: 80px; height:80px; margin-right: 5px;'/>
         	</div>
 			<?php echo form_upload(array('name' => 'Filedata', 'id' => 'upload'));?>
-			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比1:1</small><br/>
+			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,标准图片尺寸250x290px</small><br/>
 			<a class='operation' href="javascript:$('#upload').uploadifyUpload();">上传文件</a>
 			<input id="file_path" type="hidden" name='file_path' value=""></input>
         </p>
