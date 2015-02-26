@@ -32,6 +32,7 @@
             <th>地址</th>
             <th>tag</th>
             <th>位置</th>
+            <th>期数</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -72,6 +73,7 @@
             <td><?php echo $v['address'];?></td>
             <td><?php echo str_replace('|' , ';' , $v['tag_info']);?></td>
             <td><?php echo $v['position']?></td>
+            <td><?php echo $v['sequence']?></td>
             <td>
 				<?php if(!empty($v['path'])){?>
                 <img src="<?php echo $v['path'] ;?>" width="200px;"/ height="100px;">
@@ -119,6 +121,10 @@
           </select>
         </p>
         <p>
+        <label>课程期数<small>（1,2,3，默认为空）</small></label>
+        <input class="text-input small-input" type="text" id="sequence" placeholder="请输入显示位置" name="sequence"/>
+        </p>
+        <p>
         <label>显示位置<small>（1,2,3，默认为空）</small></label>
         <input class="text-input small-input" type="text" id="position" placeholder="请输入显示位置" name="position"/>
         </p>
@@ -126,7 +132,7 @@
         	<label for="exampleInputFile">列表图片</label>
         	<div id="upload_img"></div>
 			<?php echo form_upload(array('name' => 'Filedata', 'id' => 'upload'));?>
-			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比4:3</small><br/>
+			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比4:3<br>若作为第一张大图，保证图片宽1000px、高400px左右</small><br/>
 			<a class='operation' href="javascript:$('#upload').uploadifyUpload();">上传文件</a>
 			<input id="file_path" type="hidden" name='file_path' value=""></input>
         </p>

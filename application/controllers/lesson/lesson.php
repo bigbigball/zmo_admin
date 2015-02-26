@@ -90,6 +90,7 @@ class lesson extends CI_Controller
 			$data['thumb'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
 		}
 		if(!empty($post)){
+			$data['sequence'] = $post['sequence'];
 			$data['title'] = $post['title'];
 			$data['type'] = $post['type'];
 			$data['guest_id'] = $post['teacher'];
@@ -185,6 +186,7 @@ class lesson extends CI_Controller
 		}
 		if(!empty($post)){
 			$data['id'] = $post['id'];
+			$data['sequence'] = $post['sequence'];
 			$data['title'] = $post['title'];
 			$data['type'] = $post['type'];
 			$data['guest_id'] = $post['teacher'];

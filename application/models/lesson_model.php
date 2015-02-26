@@ -10,9 +10,8 @@ class Lesson_model extends CI_Model {
 	function get_list($post)
 	{
 		$data = array();
-		$this->db->select('id , title , desc , position, guest_id, thumb ,is_price,price,type,address,tag_info');
+		$this->db->select('id , sequence,title , desc , position, guest_id, thumb ,is_price,price,type,address,tag_info');
 		$this->db->where('status' , '0');
-		$this->db->order_by('order' , 'desc');
 		$this->db->order_by('id' , 'desc');
 		$this->db->limit($post['limit'],(($post['page']-1) * $post['limit']));
 		$query = $this->db->get('lesson');
