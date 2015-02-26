@@ -39,7 +39,7 @@
         </p>
         <p>
         <label>课程期数<small>（1,2,3，默认为空）</small></label>
-        <input class="text-input small-input" type="text" id="sequence" placeholder="请输入显示位置" name="sequence"/>
+        <input class="text-input small-input" type="text" id="sequence" value="<?php echo $info['info']['sequence']?>" name="sequence"/>
         </p>
         <p>
         <label>显示位置<small>（1,2,3，默认为空）</small></label>
