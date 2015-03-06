@@ -15,7 +15,7 @@ class Video extends CI_Controller {
 	function index(){
 		$uinfo = $this->video_model->get_user_info();
 		$data['uinfo'] = $uinfo;
-		$this->load->view('video/index' , $data);	
+		$this->load->view('video/index' , $data);
 	}
 	function send(){
 		$this->load->view('video/send');
@@ -36,6 +36,16 @@ class Video extends CI_Controller {
 		$request_url = spark_function::get_hashed_query_string($info, $time, $config['key']);
 		exit($request_url);
 	}
+    function videoOrder(){
+        $id = $this->input->post('id');
+        $order = $this->input->post('order');
+        $order_result = $this->video_model->update_video_order($id,$order);
+        if($order_result){
+            echo $order_result;
+        }else{
+            echo 0;
+        }
+    }
 	function show(){
 		$get = $this->input->get();
 		$option['limit'] = 5;

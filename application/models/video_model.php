@@ -33,11 +33,14 @@ class Video_model extends CI_Model {
 		$info = callHttpCommon($api , 'GET' , '' , array('user_id' => $config['uid']));*/
 		return $info ;
 	}
-
+    function update_video_order($id,$order){
+        $data['order']=$order;
+        return $this->db->update('video' , $data, array('id'=>$id));
+    }
 	function get_list($post){
-		$this->db->select('id,vid,title,content,img,ctime,tag');
+		$this->db->select('id,vid,order,title,content,img,ctime,tag');
 		$this->db->where('status' , '0');
-		$this->db->order_by('id' , 'desc');
+		$this->db->order_by('order desc,id ' , 'desc');
 		$this->db->limit($post['limit'],(($post['page']-1) * $post['limit']));
 		$query = $this->db->get('video');
 		$info = array();

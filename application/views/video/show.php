@@ -35,7 +35,8 @@
             	<th>图片</th>
               <th>题目</th>
               <th>内容</th>
-              
+              <th>排序</th>
+
               <th>操作</th>
           </tr>
         </thead>
@@ -62,7 +63,8 @@
                         </td>
                         <td><?php echo $v['title'];?></td>
                         <td><?php echo $v['content']?></td>
-                        
+                        <td><input type="text" style="width:30px" id="order<?php echo $v['id'];?>" value="<?php echo $v['order']?>" /><input  type="button" onclick="videoOrder(<?php echo $v['id'];?>);" value="修改" /></td>
+
             <td>
               <!-- Icons -->
               <a href="<?php echo site_url('video/video/deleteVideo' , array('id' => $v['id']));?>" title="Delete" onClick="delform()"><img src="<?php echo $this->config->item("img_path"); ?>icons/cross.png" alt="Delete" /></a>
@@ -148,9 +150,25 @@ swfobj.addParam('allowFullscreen','true');
 swfobj.addParam('allowScriptAccess','always');
 swfobj.addParam('wmode','transparent');
 swfobj.write('swfDiv');
+
 // 加载上传flash ------------- end
 });
-//-------------------
+function videoOrder(id){
+    var order = $('#order'+id).val();
+    $.ajax({
+        type: "POST",
+        url: "<?php echo site_url('video/video/videoOrder')?>",
+        data: {id:id,order:order},
+        success: function(msg){
+            if(msg==1){
+                alert('修改成功');
+                window.location.reload();
+            }else{
+                alert('修改失败');
+            }
+        }
+    });
+}//-------------------
 //调用者：flash
 //功能：选中上传文件，获取文件名函数
 //时间：2010-12-22
