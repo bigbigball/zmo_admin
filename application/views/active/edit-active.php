@@ -69,15 +69,15 @@
         </p>
         <p>
           <label>列表页描述</label>
-         <textarea class="text-input textarea" id="desc" name="desc" cols="79" rows="15" placeholder="限制输入500字" value="<?php echo $info['desc'];?>"></textarea>
+         <textarea class="text-input textarea" id="desc" name="desc" cols="79" rows="15" placeholder="限制输入500字" ><?php echo $info['desc'];?></textarea>
         </p>
         <p>
           <label>地址</label>
-         <textarea class="text-input textarea" id="address" name="address" cols="79" rows="15" placeholder="限制输入100字" value="<?php echo $info['address'];?>"></textarea>
+         <textarea class="text-input textarea" id="address" name="address" cols="79" rows="15" placeholder="限制输入100字" ><?php echo $info['address'];?></textarea>
         </p>
         <p>
           <label>正文</label>
-         <textarea class="text-input textarea" id="web_description" name="web_description" cols="79" rows="15" value="<?php echo $info['content'];?>"></textarea>
+         <textarea class="text-input textarea" id="web_description" name="web_description" cols="79" rows="15" ><?php echo $info['content'];?></textarea>
         </p>
         <p>
         <input type="hidden" value="<?php echo $info['id']?>" name="id" />

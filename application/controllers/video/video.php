@@ -76,15 +76,31 @@ class Video extends CI_Controller {
 			ss ( '参数错误' );
 		}
 		$post = array('id' => $id);
-		
 		$ret = $this->video_model->update_local($post);
+        $ccVideoInfo = $this->video_model->findZmoVideo($id);
 		$info['ret'] = $ret;
+        $info['cost'] = $ccVideoInfo['cost'];
+        $info['is_cost'] = $ccVideoInfo['is_cost'];
 		if (! empty ( $info )) {
 			$this->load->view ( 'video/update', $info);
 		} else {
 			ss ( '您要访问的资讯不存在' );
 		}
 	}
+    function  isCostVideo(){
+        $id = $this->input->post('id');
+        if(!$id){
+            echo 0;exit;
+        }
+        $post            = $this->input->post();
+        $data['is_cost'] = $post['is_cost'];
+        $data['cost']    = $post['cost'];
+        $ret = $this->video_model->update_cost($id,$data);
+        if($ret){
+            echo 1;
+        }
+        echo 0;
+    }
 	function editVideo(){
 		$get = $this->input->get();
 		$id =$get['id'];

@@ -15,8 +15,8 @@ class Teacher_model extends CI_Model {
 			$this->db->where('top' , $post['top']);	
 		}
 		$this->db->where('status = ' , 0);
-		$this->db->order_by('order' , 'desc');
-		$this->db->order_by('id' , 'desc');
+		$this->db->order_by('position' , 'asc');
+		$this->db->order_by('id' , 'asc');
 		$this->db->limit($post['limit'],(($post['page']-1) * $post['limit']));
 		$query = $this->db->get('tutor');
 		if($query->num_rows() > 0){

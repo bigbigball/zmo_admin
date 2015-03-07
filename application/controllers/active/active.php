@@ -110,6 +110,7 @@ class active extends CI_Controller
 			$data['price'] = $post['price'];	
 			$data['content'] = $post['web_description'];
 			$data['desc'] = $post['desc'];
+            $data['tag'] = $post['tag'];
 			$data['position'] = $post['position'];
 			$data['address'] = $post['address'];
 			$data['type'] = $post['type'];
@@ -189,7 +190,8 @@ class active extends CI_Controller
 		if(!empty($post)){
 			$data['id'] = $post['id'];
 			$data['title'] = $post['title'];
-			$data['theme'] = $post['theme'];	
+            $data['tag'] = $post['tag'];
+			$data['theme'] = $post['theme'];
 			$data['quota'] = $post['amount'];	
 			$data['is_price'] = (!empty($post['is_price'])) ? $post['is_price'] : 0;	
 			$data['price'] = $post['price'];	
