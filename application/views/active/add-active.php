@@ -77,6 +77,7 @@
     <script src="<?php echo $this->config->item('js_path'); ?>keditor/lang/zh_CN.js"></script>
 	<script>
 	$(document).ready(function(){
+
 		var editor;
 		KindEditor.ready(function(K) {
 			editor = K.create('#web_description', {

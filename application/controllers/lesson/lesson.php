@@ -189,7 +189,7 @@ class lesson extends CI_Controller
 			$data['sequence'] = $post['sequence'];
 			$data['title'] = $post['title'];
 			$data['type'] = $post['type'];
-			$data['guest_id'] = $post['teacher'];
+			$data['guest_id'] = implode(',',$post['teacher']);
 			$data['tag_info'] = (!empty($post['tag'])) ? trim(str_replace('；' , '|' , str_replace(';' , '|' , $post['tag'])) , '|'):'';
 			$data['is_price'] = (!empty($post['is_price'])) ? $post['is_price'] : 0;	
 			$data['price'] = $post['price'];
