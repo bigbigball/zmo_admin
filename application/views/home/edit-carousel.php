@@ -51,7 +51,7 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery.uploadify.v2.1.0.min.js"></script>
 <script>
 $(document).ready(function(){
-
+	$("#main-nav > li:eq(1) > ul").css('display','block'); 
 	$("#upload").uploadify({
 		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
 		script: '<?php echo base_url();?>static/script/uploadify.php',

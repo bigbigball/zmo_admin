@@ -89,6 +89,12 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>static/script/jquery.uploadify.v2.1.0.min.js"></script>
 <script>
 $(document).ready(function(){
+	$("#main-nav > li:eq(2) > ul").css('display','block'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(0) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(1) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(3) > a").removeClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(4) > a").addClass('current'); 
 	$("#upload").uploadify({
 		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
 		script: '<?php echo base_url();?>static/script/uploadify.php',

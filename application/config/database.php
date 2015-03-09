@@ -48,10 +48,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+/* $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = 'zmo';
+$db['default']['database'] = 'zmo'; */
+$db['default']['hostname'] = 'bdm113183355.my3w.com';
+$db['default']['username'] = 'bdm113183355';
+$db['default']['password'] = 'zmo281200888';
+$db['default']['database'] = 'bdm113183355_db'; 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'z_';
 $db['default']['pconnect'] = TRUE;
