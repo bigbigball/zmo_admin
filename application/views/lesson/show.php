@@ -113,7 +113,7 @@
         </p>
         <p>
           <label>选择导师</label>
-          <select name="teacher[]" multiple="multiple" class="small-input">
+          <select name="teacher" class="small-input">
             <option value="0">请选择</option>
 			<?php if(!empty($type)){foreach($tinfo as $k => $v){?>
             <option value="<?php echo $v['id'] ;?>"><?php echo $v['name'];?></option>
