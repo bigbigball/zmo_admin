@@ -17,9 +17,6 @@
       <table>
         <thead>
           <tr>
-            <!--th>
-              <input class="check-all" type="checkbox" />
-            </th-->
             <th>用户ID</th>
             <th>昵称</th>
             <th>手机号</th>
