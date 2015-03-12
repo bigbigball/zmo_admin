@@ -66,7 +66,6 @@
           会员管理 </a>
           <ul>
             <li><a class="current" href="<?php echo site_url('member/member/index'); ?>">注册会员</a></li>
-            <li><a href="<?php echo site_url('member/member/normal'); ?>">普通会员</a></li>
             <li><a href="<?php echo site_url('member/member/rechargeable'); ?>">付费会员</a></li>
           </ul>
         </li>

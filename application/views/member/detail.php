@@ -9,6 +9,7 @@ p span{font-weight:bold;}
     <h3>用户详情</h3>
     <div class="clear"></div>
   </div>
+  <!-- test zhangliang -->
   <!-- End .content-box-header -->
   <div class="content-box-content">
     <div class="tab-content default-tab" id="tab1">
@@ -47,6 +48,8 @@ p span{font-weight:bold;}
         ?>
         <?php 
             if($payInfo){
+                echo "<hr>";
+                echo "<h3>订单列表</h3>";
                 foreach($payInfo as $order){
                     echo "<hr>";
                     echo "<p><label>订单ID:</label><span>".$order['id']."</span></p>";
@@ -55,11 +58,42 @@ p span{font-weight:bold;}
                     echo "<p><label>支付金额:</label><span>".$order['amount']."元</span></p>";
                     echo "<p><label>折扣:</label><span>".$order['discount']."</span></p>";
                     echo "<p><label>订单状态:</label><span>".($order['status'] == 2 ? "已支付" : "待支付")."</span></p>";
+                    echo "<p><label>订单类型:</label><span>".$order['goods_type']."</span></p>";
+                    echo "<p><label>订单标题:</label><span>".$order['goods_title']."</span></p>";
+                }
+            }
+        ?>
+        <?php 
+            if($favourList){
+                echo "<hr>";
+                echo "<h3>收藏列表</h3>";
+                foreach($favourList as $type=>$favour){
+                    echo "<hr>";
+                    if($type == 2){
+                        echo "<p style='background:#ccc;'>收藏课程</p>";
+                        foreach($favour as $val){
+                            echo "<p><label>课程标题:</label><span>".$val['title']."</span></p>";
+                        }
+
+                    }elseif($type == 3){
+                        echo "<p style='background:#ccc;'>收藏活动</p>";
+                        foreach($favour as $val){
+                            echo "<p><label>活动标题:</label><span>".$val['title']."</span></p>";
+                            echo "<p><label>活动主题:</label><span>".$val['theme']."</span></p>";
+                        }
+                    }elseif($type == 4){
+                        echo "<p style='background:#ccc;'>收藏老师</p>";
+                        foreach($favour as $val){
+                            echo "<p><label>老师名称:</label><span>".$val['name']."</span></p>";
+                            echo "<p><label>老师职业:</label><span>".$val['occupation']."</span></p>";
+                        }
+                    }
                 }
             }
         ?>
         </fieldset>
         <div class="clear"></div>
+        <input type="hidden" value="<?php echo $isfee;?>" id="isfee" />
         <!-- End .clear -->
     </div>
   </div>
@@ -67,10 +101,15 @@ p span{font-weight:bold;}
 </div>
 <script>
 $(document).ready(function(){
+    var isfee = $("#isfee").val();
     $("#main-nav > li:eq(4) > ul").css('display','block');
-    $("#main-nav > li:eq(4) > ul > li:eq(1) > a").removeClass('current');
-    $("#main-nav > li:eq(4) > ul > li:eq(2) > a").removeClass('current');
-    $("#main-nav > li:eq(4) > ul > li:eq(0) > a").addClass('current');
+    if(isfee){
+        $("#main-nav > li:eq(4) > ul > li:eq(0) > a").removeClass('current');
+        $("#main-nav > li:eq(4) > ul > li:eq(1) > a").addClass('current');
+    }else{
+        $("#main-nav > li:eq(4) > ul > li:eq(1) > a").removeClass('current');
+        $("#main-nav > li:eq(4) > ul > li:eq(0) > a").addClass('current');
+    }
 });
 </script>
 <?php $this->load->view('public/footer'); ?>

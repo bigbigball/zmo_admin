@@ -20,6 +20,19 @@ class Member_model extends CI_Model {
 		return false;
 	}
 
+    //根据用户id数组获取用户列表
+    function get_list_by_ids($ids){
+		$this->db->select();
+        $this->db->where_in('id', $ids);
+		$this->db->order_by('id' , 'desc');
+		$query = $this->db->get('user');
+		if($query->num_rows() > 0){
+			$info = $query->result_array();
+            return $info;
+		}
+		return false;
+    }
+
     //获取指定条件下的用户总条数
 	function get_count($post){
         $count = $this->db->count_all_results('user');

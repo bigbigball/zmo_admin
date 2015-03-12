@@ -76,4 +76,16 @@ class Lesson_model extends CI_Model {
 		}
 		return $data;		
 	}
+
+    //根据id数组获取用户列表
+    function get_list_by_ids($ids){
+		$this->db->select('title');
+        $this->db->where_in('id', $ids);
+		$query = $this->db->get('lesson');
+		if($query->num_rows() > 0){
+			$result = $query->result_array();
+            return $result;
+		}
+		return false;
+    }
 }

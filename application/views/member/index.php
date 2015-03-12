@@ -17,14 +17,12 @@
       <table>
         <thead>
           <tr>
-            <!--th>
-              <input class="check-all" type="checkbox" />
-            </th-->
             <th>用户ID</th>
             <th>昵称</th>
             <th>手机号</th>
             <th>使用邮箱</th>
             <th>用户类型</th>
+            <th>第三方登录</th>
             <th>注册时间</th>
             <th>操作</th>
           </tr>
@@ -50,9 +48,10 @@
             <td><?php echo $v['mobile'];?></td>
             <td><?php echo $v['email'];?></td>
             <td><?php echo $v['type'] == 1 ? '邮箱注册' : '手机注册';?></td>
+            <td><?php echo $v['qq_openid'] ? 'QQ' : ($v['wx_openid'] ? "微信" : "无");?></td>
             <td><?php echo date('Y-m-d H:i:s' , $v['ctime']);?></td>
             <td>
-                <a href="<?php echo site_url('member/member/detail' , array('id' => $v['id']));?>">查看详情</a>
+                <a href="<?php echo site_url('member/member/detail' , array('id' => $v['id'], 'isfee' => false));?>">查看详情</a>
            	</td>
 
           </tr>
@@ -67,7 +66,6 @@
 $(function(){
 	$("#main-nav > li:eq(4) > ul").css('display','block'); 
 	$("#main-nav > li:eq(4) > ul > li:eq(1) > a").removeClass('current'); 
-	$("#main-nav > li:eq(4) > ul > li:eq(2) > a").removeClass('current'); 
 	$("#main-nav > li:eq(4) > ul > li:eq(0) > a").addClass('current'); 
 });
 </script>
