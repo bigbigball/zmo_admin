@@ -84,6 +84,30 @@ class active extends CI_Controller
 			}
 			$data['img'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
 		}
+        if(!empty($post['file_path1'])){
+			$file_path= $post['file_path1'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
+			//$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];
+			$this->load->library("image_lib");
+			$config_thumb['image_library'] = 'gd2';
+			$config_thumb['quality'] = 100;
+			$config_thumb['source_image'] = $file_path;
+			$config_thumb['new_image'] = $file_name;
+			$config_thumb['create_thumb'] = true;
+//			$config_thumb['width']	= 250;
+//			$config_thumb['height'] = 285;
+//			$config_thumb['thumb_marker']="_250_285";
+            $config_thumb['thumb_marker']="_source";
+			$this->image_lib->initialize($config_thumb);
+            if(!$this->image_lib->resize()){
+				show_error($this->image_lib->display_errors());
+			}
+			$data['img_index'] = str_replace($base_dir , '' , $dir) . $raw_name . '_source' . $file_ext;
+		}
 		
 //		if(!empty($upload_data)){
 //			$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];	
@@ -185,6 +209,29 @@ class active extends CI_Controller
 				show_error($this->image_lib->display_errors());	
 			}
 			$data['img'] = str_replace($base_dir , '' , $dir) . $raw_name . '_250_285' . $file_ext;
+		}
+        if(!empty($post['file_path1'])){
+			$file_path= $post['file_path1'];
+			$path = explode('/', $file_path);
+			$file_name = $path[count($path)-1];
+			$name_ext = explode('.', $file_name);
+			$raw_name = $name_ext[0];
+			$file_ext = '.' . $name_ext[1];
+			//$post['path'] = str_replace($base_dir , '' , $dir) . $upload_data['file_name'];
+			$this->load->library("image_lib");
+			$config_thumb['image_library'] = 'gd2';
+			$config_thumb['quality'] = 100;
+			$config_thumb['source_image'] = $file_path;
+			$config_thumb['new_image'] = $file_name;
+			$config_thumb['create_thumb'] = true;
+//			$config_thumb['width']	= 250;
+//			$config_thumb['height'] = 285;
+			$config_thumb['thumb_marker']="_source";
+			$this->image_lib->initialize($config_thumb);
+            if(!$this->image_lib->resize()){
+				show_error($this->image_lib->display_errors());
+			}
+			$data['img_index'] = str_replace($base_dir , '' , $dir) . $raw_name . '_source' . $file_ext;
 		}
 			
 		if(!empty($post)){

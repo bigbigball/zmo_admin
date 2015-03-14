@@ -40,6 +40,16 @@
 			<small id='tips'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比4:3</small><br/>
 			<a class='operation' href="javascript:$('#upload').uploadifyUpload();">上传文件</a>
 			<input id="file_path" type="hidden" name='file_path' value=""></input>
+            </p>
+        <p>
+            <label for="exampleInputFile">首页图片</label>
+            <div id="upload_img1">
+                <img src="<?php echo $info['img1']?>" style='width: 80px; height:80px; margin-right: 5px;'/>
+            </div>
+            <?php echo form_upload(array('name' => 'Filedata1', 'id' => 'upload1'));?>
+            <small id='tips1'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比4:3</small><br/>
+            <a class='operation' href="javascript:$('#upload1').uploadifyUpload();">上传文件</a>
+			<input id="file_path1" type="hidden" name='file_path1' value=""></input>
 		</p>
         <p>
           <label>标签[注：以";"号分割多个tag]</label>
@@ -101,7 +111,39 @@ $(document).ready(function(){
 	$("#main-nav > li:eq(2) > ul > li:eq(0) > a").removeClass('current'); 
 	$("#main-nav > li:eq(2) > ul > li:eq(3) > a").removeClass('current'); 
 	$("#main-nav > li:eq(2) > ul > li:eq(4) > a").removeClass('current'); 
-	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").addClass('current'); 
+	$("#main-nav > li:eq(2) > ul > li:eq(2) > a").addClass('current');
+    $("#upload1").uploadify({
+		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
+		script: '<?php echo base_url();?>static/script/uploadify.php',
+		cancelImg: '<?php echo base_url();?>static/resource/cancel.png',
+		folder: '',
+		multi : true,
+		simUploadLimit : 2,
+		overwrite : true,
+		buttonText: 'Browse',
+		sizeLimit: 1048576,
+		fileDesc: '支持格式:jpg/gif/jpeg/png/bmp',
+		fileExt : '*.jpg;*.gif;*.jpeg;*.png;*.bmp',
+		scriptAccess: 'always',
+		multi: true,
+		'onError' : function (event, queueID, fileObj, errorObj) {
+			 if (errorObj.status == 404){
+				$('#tips1').html('找不到文件');
+			 }else if (errorObj.type === "HTTP"){
+				 $('#tips1').html('error '+errorObj.type+": "+errorObj.status);
+			 }else if (errorObj.type ==="File Size"){
+				 $('#tips1').html(fileObj.name+' '+errorObj.type+' Limit: '+Math.round(errorObj.sizeLimit/1024)+'KB');
+			 }else{
+				 $('#tips1').html('error '+errorObj.type+": "+errorObj.text);
+			 }
+			},
+		'onComplete'   : function (event, queueID, fileObj, response, data) {
+			var obj = eval( "(" + response + ")" );
+			$('#tips1').html("文件上传成功!");
+			$('#upload_img1').html("<img src='" + obj.path +"' style='width: 80px; height:80px; margin-right: 5px;'/>");
+			$('#file_path1').val(obj.file_path);
+		}
+	});
 
 	$("#upload").uploadify({
 		uploader: '<?php echo base_url();?>static/resource/uploadify.swf',
