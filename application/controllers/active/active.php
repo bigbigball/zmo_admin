@@ -226,12 +226,12 @@ class active extends CI_Controller
 			$config_thumb['create_thumb'] = true;
 //			$config_thumb['width']	= 250;
 //			$config_thumb['height'] = 285;
-			$config_thumb['thumb_marker']="_source";
+//			$config_thumb['thumb_marker']="_source";
 			$this->image_lib->initialize($config_thumb);
             if(!$this->image_lib->resize()){
 				show_error($this->image_lib->display_errors());
 			}
-			$data['img_index'] = str_replace($base_dir , '' , $dir) . $raw_name . '_source' . $file_ext;
+			$data['img_index'] = str_replace($base_dir , '' , $dir) . $raw_name . '' . $file_ext;
 		}
 			
 		if(!empty($post)){

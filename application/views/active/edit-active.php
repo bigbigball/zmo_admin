@@ -44,7 +44,7 @@
         <p>
             <label for="exampleInputFile">首页图片</label>
             <div id="upload_img1">
-                <img src="<?php echo $info['img1']?>" style='width: 80px; height:80px; margin-right: 5px;'/>
+                <img src="<?php echo $info['img_index']?>" style='width: 80px; height:80px; margin-right: 5px;'/>
             </div>
             <?php echo form_upload(array('name' => 'Filedata1', 'id' => 'upload1'));?>
             <small id='tips1'>支持格式:jpg/gif/jpeg/png/bmp;文件小于500k,长宽比4:3</small><br/>
