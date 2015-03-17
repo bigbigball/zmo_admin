@@ -76,9 +76,9 @@ class news extends CI_Controller
 			$config_thumb['source_image'] = $file_path;
 			$config_thumb['new_image'] = $file_name;
 			$config_thumb['create_thumb'] = true;
-			$config_thumb['width']	= 250;  
-			$config_thumb['height'] = 285;  
-			$config_thumb['thumb_marker']="_250_285";
+//			$config_thumb['width']	= 250;
+//			$config_thumb['height'] = 285;
+//			$config_thumb['thumb_marker']="_250_285";
 			$this->image_lib->initialize($config_thumb); 
             if(!$this->image_lib->resize()){
 				show_error($this->image_lib->display_errors());	
@@ -177,9 +177,9 @@ class news extends CI_Controller
 			$config_thumb['source_image'] = $file_path;
 			$config_thumb['new_image'] = $file_name;
 			$config_thumb['create_thumb'] = true;
-			$config_thumb['width']	= 250;  
-			$config_thumb['height'] = 285;  
-			$config_thumb['thumb_marker']="_250_285";
+//			$config_thumb['width']	= 250;
+//			$config_thumb['height'] = 285;
+//			$config_thumb['thumb_marker']="_250_285";
 			$this->image_lib->initialize($config_thumb); 
             if(!$this->image_lib->resize()){
 				show_error($this->image_lib->display_errors());	
