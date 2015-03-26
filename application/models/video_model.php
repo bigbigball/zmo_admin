@@ -110,6 +110,24 @@ class Video_model extends CI_Model {
 		$query_string = $this->get_query_string($qs,$config['key']);
 		$api = $api . '?' .$query_string;
 		$info = callHttpCommon($api , 'GET' );
+        $api = $config['api']['category'];
+		$qs['format'] = 'json';
+		$qs['userid'] =  $config['uid'];
+		$qs['videoid_from'] = $vid;
+		$query_string = $this->get_query_string($qs,$config['key']);
+		$api = $api . '?' .$query_string;
+		$category_info = callHttpCommon($api , 'GET' );
+        if($category_info['video']['category'][0]['sub-category']){
+            $this->db->where('id >',0);
+            $this->db->delete('category');
+            foreach($category_info['video']['category'][0]['sub-category'] as $v){
+                $data['name'] = $v['name'];
+                $data['code'] = $v['id'];
+                $data['ctime'] = time();
+                $data['utime'] = time();
+                $res = $this->db->insert('category' , $data);
+            }
+        }
 		if(!empty($info) && !empty($info['videos']) && $info['videos']['total'] > 0){
 			foreach($info['videos']['video'] as $k => $v){
 				$data = array();

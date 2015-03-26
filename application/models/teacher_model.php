@@ -62,6 +62,9 @@ class Teacher_model extends CI_Model {
 		if(!empty($post['status'])){
 			$data['status'] = $post['status'] ;	
 		}
+        if(!empty($post['introduct'])){
+            $data['introduct'] = $post['introduct'];
+        }
 		if(!empty($post['utime'])){
 			$data['utime'] = time() ;	
 		}
@@ -105,6 +108,9 @@ class Teacher_model extends CI_Model {
 		if(!empty($post['home_img'])){
 			$data['home_img'] = $post['home_img'];	
 		}
+        if(!empty($post['introduct'])){
+            $data['introduct'] = $post['introduct'];
+        }
 		if(isset($post['top'])){
 			$data['top'] = $post['top'];	
 		}
@@ -119,7 +125,7 @@ class Teacher_model extends CI_Model {
 	function getTeacher($post){
 		$data['ret'] = 400;
 		if(!empty($post['id'])){
-			$this->db->select('id , name , position,portrait , home_img , occupation as occ , desc,resume,status,top,order');
+			$this->db->select('id , name , position,introduct,portrait , home_img , occupation as occ , desc,resume,status,top,order');
 			$this->db->where('id' , $post['id']);
 			$query = $this->db->get('tutor');
 			if($query->num_rows() > 0){

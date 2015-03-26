@@ -33,6 +33,10 @@
                     <label for="exampleInputEmail1">导师简历</label>
                     <textarea class="form-control" rows="3" name="resume" id="resume"></textarea>
                   </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">导师介绍</label>
+                        <textarea class="form-control" rows="3" name="introduct" id="introduct"><?php if(!empty($info['introduct'])){echo $info['introduct'];}?></textarea>
+                    </div>
                   <div class="form-group">
                     <label for="exampleInputFile">导师照片</label>
                     <input type="file" id="file" name="file">

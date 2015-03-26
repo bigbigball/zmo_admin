@@ -46,7 +46,11 @@
           <label>导师简历</label>
           <textarea class="form-control" rows="3" name="resume" id="resume"><?php if(!empty($info['desc'])){echo $info['resume'];}?></textarea>
         </p>
-        <p>
+            <p>
+                <label>导师介绍</label>
+                <textarea class="form-control" rows="3" name="introduct" id="introduct"><?php if(!empty($info['introduct'])){echo $info['introduct'];}?></textarea>
+            </p>
+            <p>
         <input type="hidden" value="<?php echo $info['id']?>" name="id" />
           <input class="button" type="submit" value="提交" onClick="from_submit()"/>
           <input class="button" type="button" value="返回" onClick="go_back()"/>
