@@ -16,6 +16,28 @@ class member extends CI_Controller {
 		$this->load->model('member_model','',true);
 		$this->load->library('form_validation');
 	}
+    //会员列表页面（包括普通会员和付费会员）
+    function year(){
+        $get = $this->input->get();
+        $option['limit'] = 15;
+        $option['page'] = empty($get['page']) ? 1 : $get['page'];
+        $this->load->library('pagination');
+        $config['num_links'] = 5;
+        $config['use_page_numbers'] = TRUE;
+        $config['page_query_string'] = TRUE;
+        $config['query_string_segment'] = 'page';
+        $config['base_url'] = site_url('member/member/year') . '?';
+        $config['total_rows'] = $this->member_model->get_year_count($option);
+        $config['per_page'] = $option['limit'];
+        $config['cur_page'] = $option['page'];
+        $this->pagination->initialize($config);
+        $pagination = $this->pagination->create_links();
+        $list = $this->member_model->get_year_list($option);
+        $data['list'] = $list ? $list : array();
+        $data['page'] = $pagination;
+        $this->load->view('member/index', $data);
+    }
+
 	
     //会员列表页面（包括普通会员和付费会员）
 	function index(){

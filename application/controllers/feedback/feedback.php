@@ -7,7 +7,55 @@ class Feedback extends CI_Controller {
 	   	parent::__construct();
 		$this->load->model('feedback_model','',true);
 	}
-	
+    function edit(){
+        if(isset($_POST['id']) and $_POST['id'] >0){
+            $result = $this->db->where('id' , $_POST['id'])->update('year' ,
+                array(
+                    'price' => $this->input->post('price'),
+                    'title' => $this->input->post('title'),
+                )
+            );
+            if($result){
+                echo 1;exit;
+            }
+            echo 1;exit;
+        }else{
+            echo 0;exit;
+        }
+    }
+    function editYear(){
+        $data = array();
+        $this->db->select('*');
+        $this->db->where('id',$_GET['id']);
+        $query = $this->db->get('year');
+        if($query->num_rows() > 0){
+            $info = $query->row_array();
+            $data['info'] = $info;
+        }
+        $this->load->view('feedback/edityear' , $data);
+    }
+    function 	year(){
+        $get = $this->input->get();
+        $option['limit'] = 50;
+        $option['page'] = empty($get['page']) ? 1 : $get['page'];
+        $option['status'] = 0 ;
+        $this->load->library('pagination');
+        $config['num_links'] = 5;
+        $config['use_page_numbers'] = TRUE;
+        $config['page_query_string'] = TRUE;
+        $config['query_string_segment'] = 'page';
+        $config['base_url'] = site_url('feedback/feedback/year') . '?';
+        $config['total_rows'] = $this->feedback_model->get_year_count($option);
+        $config['per_page'] = $option['limit'];
+        $config['cur_page'] = $option['page'];
+
+        $this->pagination->initialize($config);
+        $pagination = $this->pagination->create_links();
+        $list = $this->feedback_model->get_year_list($option);
+        $data['list'] = !empty($list['info']) ? $list['info'] : array();
+        $data['page'] = $pagination;
+        $this->load->view('feedback/year' , $data);
+    }
 	function show(){
 		$get = $this->input->get();
 		$option['limit'] = 50;
@@ -18,7 +66,7 @@ class Feedback extends CI_Controller {
 		$config['use_page_numbers'] = TRUE; 
 		$config['page_query_string'] = TRUE;
 		$config['query_string_segment'] = 'page';
-        $config['base_url'] = site_url('operate/operate/show') . '?';
+        $config['base_url'] = site_url('feedback/feedback/show') . '?';
         $config['total_rows'] = $this->feedback_model->get_count($option);
         $config['per_page'] = $option['limit'];
         $config['cur_page'] = $option['page'];

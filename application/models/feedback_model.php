@@ -11,7 +11,21 @@ class Feedback_model extends CI_Model {
         $count = $this->db->count_all_results('feedback');
         return $count;
 	}
-    
+    function get_year_count($post){
+        $count = $this->db->count_all_results('year');
+        return $count;
+	}
+    function get_year_list($post){
+		$data = array();
+		$this->db->select('*');
+		$this->db->limit($post['limit'],(($post['page']-1) * $post['limit']));
+		$query = $this->db->get('year');
+		if($query->num_rows() > 0){
+			$info = $query->result_array();
+			$data['info'] = $info;
+		}
+		return $data;
+	}
 	function get_list($post){
 		$data = array();
 		$this->db->select('*');

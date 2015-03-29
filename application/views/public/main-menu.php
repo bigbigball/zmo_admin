@@ -56,6 +56,7 @@
           运营管理 </a>
           <ul>
             <li><a class="current" href="<?php echo site_url('operate/operate/show'); ?>">邀请码</a></li>
+              <li><a class="current" href="<?php echo site_url('feedback/feedback/year'); ?>">设置年费会员</a></li>
             <li><a class="current" href="<?php echo site_url('feedback/feedback/show'); ?>">意见反馈</a></li>
           </ul>
         </li>
@@ -67,6 +68,7 @@
           <ul>
             <li><a class="current" href="<?php echo site_url('member/member/index'); ?>">注册会员</a></li>
             <li><a href="<?php echo site_url('member/member/rechargeable'); ?>">付费会员</a></li>
+              <li><a href="<?php echo site_url('member/member/year'); ?>">年费会员</a></li>
           </ul>
         </li>
         <!-- zhangliang end -->
